@@ -16,7 +16,7 @@ angular
       .when('/lists', {
         templateUrl: '/partials/lists-controller.html',
         controller: 'ListsController',
-        controllerAs: 'lists',
+        controllerAs: 'listsCtrl',
       })
       .otherwise('/login');
   },

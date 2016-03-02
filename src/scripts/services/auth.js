@@ -6,7 +6,7 @@ angular
   '$q',
   'users',
   '$location',
-  function($q, users) {
+  function($q, users, $location) {
     var refData = new Firebase("https://remto.firebaseio.com");
     // var remToData = {
     //   users: {
@@ -25,14 +25,14 @@ angular
           email: email,
           password: password
         };
-        refData.createUser(cred, function(err, userCred) {
-          if (err != null) {
+        refData.createUser(cred, function(err, userData) {
+          if (err) {
             //loginCtrl.errorMessage = err;
             console.log(err);
           }
           else {
-            console.log(userCred);
-            users.create(userCred);
+            console.log(userData);
+            users.create(userData);
             auth.login(cred.email, cred.password);
           }
         });
@@ -49,12 +49,13 @@ angular
         }
         // Authenticate users with an email/password combination
         refData.authWithPassword({
-          email    : 'email',
-          password : 'password'
+          email    : email,
+          password : password
         }, authHandler);
       },
 
       logout: function() {
+        console.log('reached auth logout');
         refData.unauth();
       },
 
@@ -67,9 +68,10 @@ angular
         function authDataCheck(authData) {
           // Logs the current auth state
           if (authData) {
-            console.log("User " + authData.uid + " is logged in with " + authData.provider);
             $location.url('/lists');
+            console.log("User " + authData.uid + " is logged in with " + authData.provider);
           } else {
+            $location.url('/login');
             console.log("User is logged out");
           }
         }

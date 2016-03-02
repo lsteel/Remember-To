@@ -21,7 +21,7 @@ angular
     };
 
     loginCtrl.signin = function(email, password) {
-      return auth.loginCtrl(email, password);
+      return auth.login(email, password);
     };
 
     loginCtrl.signup = function(email, password) {
