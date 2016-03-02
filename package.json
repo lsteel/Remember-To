@@ -1,0 +1,29 @@
+{
+  "name": "remto",
+  "version": "0.0.1",
+  "description": "A timeframe based reminder and todo app.",
+  "author": {
+    "name": "Lorin Steel"
+  },
+  "mean": "0.5.5",
+  "dependencies": {
+    "bower-files": "^3.11.3"
+  },
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "bower install"
+  },
+  "devDependencies": {
+    "bower-files": "^3.11.3",
+    "express": "^4.13.3",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-htmlmin": "^1.2.0",
+    "gulp-imagemin": "^2.3.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-pleeease": "^2.0.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.4.1",
+    "imagemin-pngquant": "^4.2.0"
+  }
+}

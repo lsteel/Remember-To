@@ -1,0 +1,62 @@
+// out: ../styles/main.css, sourcemap: true, compress: true
+
+/* Mobile first queries */
+@import 'reset'
+@import 'fontface'
+
+$black = #000
+$white = #fff
+$off-white = #f1f2f2
+$clear-white = rgba(255,255,255,.75)
+
+//Futura-Heavy          700
+//Futura-Book           400
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active
+  color inherit
+  text-decoration none
+
+h4,h5,h6,p,ol,ul
+  line-height 1.3
+
+p
+  a,
+  a:link,
+  a:visited,
+  a:hover,
+  a:active
+    color inherit
+    text-decoration underline
+
+img
+  max-width 100%
+
+.italic
+  font-style italic
+
+//remove this section before live production
+.screen-resolution
+  display block
+  position fixed
+  bottom 20px
+  right 20px
+  color $white
+//end section to remove
+
+html, body
+  margin 0 auto
+  padding 0
+  width 100%
+  height 100%
+  font-size 13px
+  letter-spacing -.5px
+  font-weight 400
+  font-family "open-sans", 'Open Sans', sans-serif
+  color $black
+
+
+@import 'media-queries'
