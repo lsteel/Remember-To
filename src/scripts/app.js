@@ -3,6 +3,7 @@ angular
   'ngRoute',
   'LoginController',
   'ListsController',
+  'firebase',
 ])
 .config([
   '$routeProvider',

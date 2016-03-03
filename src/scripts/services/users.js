@@ -4,10 +4,17 @@ angular
 ])
 .factory('users', [
   function() {
-    var refData = new Firebase("https://remto.firebaseio.com/users");
+    var ref = new Firebase("https://remto.firebaseio.com/");
     var users = {
-      create: function(user) {
-        refData.push(user);
+      create: function(returnedData, userCred) {
+        userObj = {
+          users: {}
+        };
+        userObj.users[returnedData.uid] = {
+          email: userCred.email,
+          createdOn: Date.now()
+        };
+        ref.push(userObj);
       }
     };
 

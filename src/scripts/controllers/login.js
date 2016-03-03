@@ -3,13 +3,14 @@ angular
   'appAuth',
 ])
 .controller('LoginController', [
-  'auth',
+  'authFuncs',
   '$location',
-  function (auth, $location) {
+  '$firebaseAuth',
+  function (authFuncs, $location, $firebaseAuth) {
     var loginCtrl = this;
 
     (function() {
-      auth.isLoggedIn();
+      authFuncs.isLoggedIn();
     })();
 
     loginCtrl.inputType = 'signin';
@@ -17,16 +18,25 @@ angular
     loginCtrl.submit = function(email, password) {
       loginCtrl.errorMessage = null;
 
-      loginCtrl[loginCtrl.inputType](email, password);
+      loginCtrl[loginCtrl.inputType](email, password, function(err, userData) {
+        if (err.message) {
+          loginCtrl.errorMessage = err.message;
+        }
+        else if (err) {
+          loginCtrl.errorMessage = err;
+        }
+      });
     };
 
-    loginCtrl.signin = function(email, password) {
-      return auth.login(email, password);
+    loginCtrl.signin = function(email, password, cb) {
+      return authFuncs.login(email, password, cb);
     };
 
-    loginCtrl.signup = function(email, password) {
-      return auth.create(email, password);
+    loginCtrl.signup = function(email, password, cb) {
+      return authFuncs.create(email, password, cb);
     };
-    return loginCtrl;
+    loginCtrl.forgot = function(email, password, cb) {
+      return authFuncs.resetPass(email, cb);
+    };
   },
 ]);

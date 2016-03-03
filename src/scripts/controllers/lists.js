@@ -3,18 +3,18 @@ angular
   'appAuth',
 ])
 .controller('ListsController', [
-  'auth',
+  'authFuncs',
   '$location',
-  function (auth, $location) {
+  '$firebaseAuth',
+  function (authFuncs, $location, $firebaseAuth) {
     var listsCtrl = this;
 
     (function() {
-      auth.isLoggedIn();
+      authFuncs.isLoggedIn();
     })();
 
     listsCtrl.signout = function(email, password) {
-      console.log('logout button pressed.');
-      return auth.logout();
+      return authFuncs.logout();
     };
 
     // listsCtrl.inputType = 'signin';
@@ -26,11 +26,11 @@ angular
     // };
     //
     // listsCtrl.signin = function(email, password) {
-    //   return auth.login(email, password);
+    //   return authFuncs.login(email, password);
     // };
     //
     // listsCtrl.signup = function(email, password) {
-    //   return auth.create(email, password);
+    //   return authFuncs.create(email, password);
     // };
     // return listsCtrl;
   },
