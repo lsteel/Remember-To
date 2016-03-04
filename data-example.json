@@ -1,0 +1,52 @@
+{
+  "users": {
+    "49936e1c-3de9-4752-9a4d-a4833cc30774": {
+      "createdOn": 1457029645190,
+      "name": "John Doe",
+      "email": "asdf@gmail.com",
+      "lists": [
+        {
+          "lid": "-KBxj-CDo-oajTK2wR9W",
+          "do-not-disturb": false,
+          "color": "purple",
+          "icon": "http://www...../images/home-icon.png",
+          "lat-longs": [
+            "40.389892, -111.919277",
+            "40.389798, -111.920260",
+            "40.388606, -111.919174"
+          ],
+          "times": [
+            "1734",
+            "2104"
+          ],
+          "days": [
+            "mon",
+            "fri"
+          ]
+        }
+      ]
+    }
+  },
+  "settings": {
+    "49936e1c-3de9-4752-9a4d-a4833cc30774": {
+      "star-to-top": false,
+      "add-task-to-top": false,
+      "list-badge": "today/all",
+      "ask-location": true
+    }
+  },
+  "lists": {
+    "-KBxj-CDo-oajTK2wR9W": {
+      "list-name": "at home",
+      "users": [
+        "49936e1c-3de9-4752-9a4d-a4833cc30774",
+        "49936e1c-3de9-4752-9a4d-a4833cc30775",
+        "49936e1c-3de9-4752-9a4d-a4833cc30776"
+      ],
+      "owners": [
+        "49936e1c-3de9-4752-9a4d-a4833cc30774",
+        "49936e1c-3de9-4752-9a4d-a4833cc30775"
+      ]
+    }
+  }
+}
