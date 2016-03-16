@@ -1,24 +1,25 @@
 angular
-.module('RemToApp', [
-  'ngRoute',
-  'LoginController',
-  'ListsController',
-  'firebase',
-])
-.config([
-  '$routeProvider',
-  function ($routeProvider) { 'use strict';
-    $routeProvider
-      .when('/login', {
-        templateUrl: '/partials/login-controller.html',
-        controller: 'LoginController',
-        controllerAs: 'loginCtrl',
-      })
-      .when('/lists', {
-        templateUrl: '/partials/lists-controller.html',
-        controller: 'ListsController',
-        controllerAs: 'listsCtrl',
-      })
-      .otherwise('/login');
-  },
-]);
+  .module('RemToApp', [
+    'ngRoute',
+    'LoginController',
+    'ListsController',
+    'MainController',
+    'firebase',
+  ])
+  .config([
+    '$routeProvider',
+    function ($routeProvider) { 'use strict';
+      $routeProvider
+        .when('/login', {
+          templateUrl: '/partials/login-controller.html',
+          controller: 'LoginController',
+          controllerAs: 'loginCtrl',
+        })
+        .when('/lists', {
+          templateUrl: '/partials/lists-controller.html',
+          controller: 'ListsController',
+          controllerAs: 'listsCtrl',
+        })
+        .otherwise('/login');
+    },
+  ]);

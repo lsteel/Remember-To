@@ -4,7 +4,7 @@
       <div class="profile-pic-wrapper">
         <div class="profile-pic-container">
           <a href="#">
-            <img src="images/profile-pic.png" alt="Profile Pic" />
+            <img src="images/remember-to-avatar.jpg" alt="Profile Pic" />
           </a>
         </div>
       </div>
@@ -16,10 +16,14 @@
       <button ng-click="listsCtrl.signout()" class="btn btn-xs btn-danger">
         sign out
       </button>
+      {{ listsCtrl.uid }}
     </header>
     <div class="lists-wrapper">
       <div class="list-container"><!-- Repeat list in lists -->
       </div>
     </div>
+    <button ng-click="listsCtrl.createList()" class="btn btn-xs btn-danger">
+      create list
+    </button>
   </div>
 </div>

@@ -11,9 +11,7 @@ angular
     var ref = new Firebase("https://remto.firebaseio.com");
     auth = $firebaseAuth(ref);
     // var remToData = {
-    //   users: {
-    //     name: 'name'
-    //   }
+    //   users: {}
     // };
     // console.log(remToData);
     // ref.set(remToData);
@@ -30,18 +28,15 @@ angular
 
         auth
           .$createUser(cred)
-          .then(function(userData) {
-            console.log("User " + userData.uid + " created successfully!");
-            users.create(userData, cred);
-            authFuncs.login(cred.email, cred.password, cb);
-          })
-          .then(function(authData) {
-            console.log("Logged in as:", authData.uid);
-          })
-          .catch(function(error) {
-            console.error("Error: ", error);
-            cb(error, null);
-          });
+            .then(function(userData) {
+              console.log("User " + userData.uid + " created successfully!");
+              users.create(userData, cred);
+              authFuncs.login(cred.email, cred.password, cb);
+            })
+            .catch(function(error) {
+              console.error("Error: ", error);
+              cb(error, null);
+            });
 
 
 
@@ -98,13 +93,14 @@ angular
         $location.url('/login');
       },
 
-      isLoggedIn: function() {
+      isLoggedIn: function(cb) {
         //synchronously check authentication state
         var authData = auth.$getAuth();
 
         console.log(authData);
         // Logs the current auth state
         if (authData) {
+          cb(null, authData);
           $location.url('/lists');
           console.log("User " + authData.uid + " is logged in with " + authData.provider);
         } else {

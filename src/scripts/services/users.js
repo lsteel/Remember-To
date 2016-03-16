@@ -1,20 +1,29 @@
 angular
 .module('appUsers', [
   'appAuth',
+  'appSettings',
 ])
 .factory('users', [
-  function() {
-    var ref = new Firebase("https://remto.firebaseio.com/");
+  '$firebaseObject',
+  'userSettings',
+  function($firebaseObject, userSettings) {
+
     var users = {
       create: function(returnedData, userCred) {
-        userObj = {
-          users: {}
-        };
-        userObj.users[returnedData.uid] = {
-          email: userCred.email,
-          createdOn: Date.now()
-        };
-        ref.push(userObj);
+        var userURL = "https://remto.firebaseio.com/users/" + returnedData.uid,
+            ref = new Firebase(userURL),
+            fireUser = $firebaseObject(ref);
+
+        fireUser.email = userCred.email;
+        fireUser.name = "";
+        fireUser.createdOn = Date.now();
+        fireUser.$save().then(function() {
+          console.log('User set.');
+          //send to initialize user settings
+          userSettings.create(fireUser.$id);
+        }, function(error) {
+          console.log("Error:", error);
+        });
       }
     };
 
