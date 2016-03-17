@@ -18,7 +18,10 @@
       </button>
     </header>
     <div class="lists-wrapper">
-      <div class="list-container"><!-- Repeat list in lists -->
+      <div class="list-container">
+        <div class="list" ng-repeat="list in listsCtrl.userLists">
+          {{ list['list-name'] }}
+        </div>
       </div>
     </div>
     <a href="#/create-list" class="btn btn-link">+ list</a>

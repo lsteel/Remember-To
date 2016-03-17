@@ -26,6 +26,11 @@ angular
           controller: 'ListCreateController',
           controllerAs: 'listCreateCtrl',
         })
+        .when('/:lid', {
+          templateUrl: '/partials/tasks-controller.html',
+          controller: 'TasksController',
+          controllerAs: 'tasksCtrl',
+        })
         .otherwise('/login');
     },
   ]);

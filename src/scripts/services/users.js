@@ -51,9 +51,7 @@ angular
 
         lists.$add(listSettings).then();
         lists = $firebaseArray(ref);
-        lists.$loaded().then(function() {
-          console.log(lists);
-        });
+        lists.$loaded().then(function() {});
 
         //lists.$add(listID).then(function() {});
       }

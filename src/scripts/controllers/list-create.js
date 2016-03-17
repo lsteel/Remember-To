@@ -44,9 +44,8 @@ angular
         inputs.icon = inputs.icon || "home";
         return lists.create(listCreateCtrl.uid, inputs, function(listID, inputs) {
           users.addList(listCreateCtrl.uid, inputs, listID);
-          console.log(inputs);
-
           listCreateCtrl.inputs = {};
+          $location.url('/lists');
         });
       };
     },

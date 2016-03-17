@@ -2,14 +2,19 @@ angular
   .module('ListsController', [
     'appAuth',
     'appUsers',
+    'appLists',
   ])
   .controller('ListsController', [
     'authFuncs',
     'users',
+    'lists',
     '$location',
     '$firebaseAuth',
-    function (authFuncs, users, $location, $firebaseAuth) {
+    "$timeout",
+    function (authFuncs, users, lists, $location, $firebaseAuth, $timeout) {
       var listsCtrl = this;
+
+      listsCtrl.userLists = [];
 
       (function() {
         authFuncs.isLoggedIn(function(err, data) {
@@ -22,6 +27,15 @@ angular
           else {}
         });
       })();
+
+
+      lists.get(listsCtrl.uid, function(fireLists) {
+        listsCtrl.userLists = fireLists;
+        console.log(listsCtrl.userLists);
+      });
+
+
+
 
       listsCtrl.signout = function(email, password) {
         return authFuncs.logout();
