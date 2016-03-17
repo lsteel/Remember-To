@@ -3,6 +3,7 @@ angular
     'ngRoute',
     'LoginController',
     'ListsController',
+    'ListCreateController',
     'MainController',
     'firebase',
   ])
@@ -19,6 +20,11 @@ angular
           templateUrl: '/partials/lists-controller.html',
           controller: 'ListsController',
           controllerAs: 'listsCtrl',
+        })
+        .when('/create-list', {
+          templateUrl: '/partials/list-creation-controller.html',
+          controller: 'ListCreateController',
+          controllerAs: 'listCreateCtrl',
         })
         .otherwise('/login');
     },

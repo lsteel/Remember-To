@@ -1,14 +1,14 @@
 angular
   .module('ListsController', [
     'appAuth',
-    'list',
+    'appUsers',
   ])
   .controller('ListsController', [
     'authFuncs',
-    'lists',
+    'users',
     '$location',
     '$firebaseAuth',
-    function (authFuncs, lists, $location, $firebaseAuth) {
+    function (authFuncs, users, $location, $firebaseAuth) {
       var listsCtrl = this;
 
       (function() {
@@ -27,8 +27,8 @@ angular
         return authFuncs.logout();
       };
 
-      listsCtrl.createList = function() {
-        return lists.create(listsCtrl.uid);
+      listsCtrl.clearEverything = function() {
+        return authFuncs.clearAll();
       };
 
 

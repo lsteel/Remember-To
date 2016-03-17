@@ -4,11 +4,14 @@ angular
   'appSettings',
 ])
 .factory('users', [
+  '$rootScope',
   '$firebaseObject',
+  '$firebaseArray',
   'userSettings',
-  function($firebaseObject, userSettings) {
+  function($rootScope, $firebaseObject, $firebaseArray, userSettings) {
 
     var users = {
+
       create: function(returnedData, userCred) {
         var userURL = "https://remto.firebaseio.com/users/" + returnedData.uid,
             ref = new Firebase(userURL),
@@ -24,6 +27,35 @@ angular
         }, function(error) {
           console.log("Error:", error);
         });
+      },
+
+      update: function(uid, urlValue, value) {
+        var refURL = "https://remto.firebaseio.com/users/" + uid + "/" + urlValue,
+            ref = new Firebase(refURL);
+
+        ref.update(value);
+      },
+
+      addList: function(uid, inputs, listID) {
+        var url = "https://remto.firebaseio.com/users/" + uid + "/lists/",
+            ref = new Firebase(url),
+            lists = $firebaseArray(ref);
+
+        listSettings = {
+          "lid": listID,
+          "doNotDisturb": inputs.doNotDisturb,
+          "color": inputs.color,
+          "icon": inputs.icon,
+          "locations": [ inputs.location ]
+        };
+
+        lists.$add(listSettings).then();
+        lists = $firebaseArray(ref);
+        lists.$loaded().then(function() {
+          console.log(lists);
+        });
+
+        //lists.$add(listID).then(function() {});
       }
     };
 

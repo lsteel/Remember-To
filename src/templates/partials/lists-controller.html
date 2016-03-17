@@ -16,14 +16,15 @@
       <button ng-click="listsCtrl.signout()" class="btn btn-xs btn-danger">
         sign out
       </button>
-      {{ listsCtrl.uid }}
     </header>
     <div class="lists-wrapper">
       <div class="list-container"><!-- Repeat list in lists -->
       </div>
     </div>
-    <button ng-click="listsCtrl.createList()" class="btn btn-xs btn-danger">
-      create list
+    <a href="#/create-list" class="btn btn-link">+ list</a>
+    <br><br><br>
+    <button ng-click="listsCtrl.clearEverything()" class="btn btn-xs btn-danger">
+      CLEAR EVERYTHING
     </button>
   </div>
 </div>

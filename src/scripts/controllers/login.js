@@ -10,7 +10,7 @@ angular
       var loginCtrl = this;
 
       (function() {
-        authFuncs.isLoggedIn();
+        authFuncs.isLoggedIn(function(err, data) {});
       })();
 
       loginCtrl.inputType = 'signin';

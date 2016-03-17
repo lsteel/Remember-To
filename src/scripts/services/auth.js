@@ -3,28 +3,36 @@ angular
   'appUsers',
 ])
 .factory('authFuncs', [
+  '$rootScope',
   '$q',
   'users',
   '$location',
+  '$timeout',
   '$firebaseAuth',
-  function($q, users, $location, $firebaseAuth) {
+  function($rootScope, $q, users, $location, $timeout, $firebaseAuth) {
     var ref = new Firebase("https://remto.firebaseio.com");
     auth = $firebaseAuth(ref);
-    // var remToData = {
-    //   users: {}
-    // };
-    // console.log(remToData);
-    // ref.set(remToData);
+
+    //ref.set({});
 
     //var authData = ref.getAuth();
 
     var authFuncs = {
+
+      clearAll: function() {
+        auth
+          .$removeUser($rootScope.pastCredentials);
+        ref.set({});
+      },
 
       create: function(email, password, cb) {
         var cred = {
           email: email,
           password: password
         };
+
+        $rootScope.pastCredentials = cred;
+        console.log($rootScope.pastCredentials);
 
         auth
           .$createUser(cred)
@@ -97,15 +105,17 @@ angular
         //synchronously check authentication state
         var authData = auth.$getAuth();
 
-        console.log(authData);
+        //console.log(authData);
         // Logs the current auth state
         if (authData) {
           cb(null, authData);
-          $location.url('/lists');
-          console.log("User " + authData.uid + " is logged in with " + authData.provider);
+          if ($location.path() === '/login') {
+            $location.url('/lists');
+          }
+          //console.log("User " + authData.uid + " is logged in with " + authData.provider);
         } else {
           $location.url('/login');
-          console.log("User is logged out");
+          //console.log("User is logged out");
         }
       },
 

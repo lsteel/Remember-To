@@ -1,25 +1,26 @@
 angular
-  .module('list', [])
+  .module('appLists', [
+    'appUsers',
+  ])
   .factory('lists', [
+    'users',
     '$firebaseObject',
-    function($firebaseObject) {
+    function(users, $firebaseObject) {
 
       var lists = {
-        create: function(userID) {
+        create: function(userID, inputs, cb) {
           var listsRef = new Firebase("https://remto.firebaseio.com/lists/");
-
           var listPushRef = listsRef.push();
-          var listKey = listPushRef.key();
-          console.log(listKey);
-
           var fireLists = $firebaseObject(listPushRef);
 
-          fireLists['list-name'] = 'random';
-          fireLists.users = [userID];
-          fireLists.owners = [userID];
+          var listKey = fireLists.$id;
+          fireLists['list-name'] = inputs.name;
+          fireLists.users = [inputs.users];
+          fireLists.owners = [inputs.users];
 
           fireLists.$save().then(function() {
             console.log('List set.');
+            return cb(listKey, inputs);
           }, function(error) {
             console.log("Error:", error);
           });

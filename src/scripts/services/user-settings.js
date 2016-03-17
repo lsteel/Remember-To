@@ -6,7 +6,7 @@ angular
 
       var userSettings = {
         create: function(userID) {
-          var settingsURL = "https://remto.firebaseio.com/settings/" + userID,
+          var settingsURL = "https://remto.firebaseio.com/users/" + userID + "/settings",
               userSettingsRef = new Firebase(settingsURL),
               fireUserSettings = $firebaseObject(userSettingsRef);
 

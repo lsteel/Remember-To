@@ -4,12 +4,12 @@
       "createdOn": 1457029645190,
       "name": "John Doe",
       "email": "asdf@gmail.com",
-      "list-settings": [
+      "lists": [
         {
           "lid": "-KBxj-CDo-oajTK2wR9W",
-          "do-not-disturb": false,
+          "doNotDisturb": false,
           "color": "purple",
-          "icon": "http://www...../images/home-icon.png",
+          "icon": "home",
           "lat-longs": [
             "40.389892, -111.919277",
             "40.389798, -111.920260",
