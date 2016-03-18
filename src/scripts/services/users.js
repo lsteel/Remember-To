@@ -54,7 +54,26 @@ angular
         lists.$loaded().then(function() {});
 
         //lists.$add(listID).then(function() {});
+      },
+
+      updateList: function(uid, lsid, inputs, lid) {
+        console.log(lsid);
+        var userListsSettingsRef = new Firebase("https://remto.firebaseio.com/users/" + uid + "/lists/" + lsid);
+        var fireUserListsSettings = $firebaseObject(userListsSettingsRef);
+
+        fireUserListsSettings.color = inputs.color;
+        fireUserListsSettings.doNotDisturb = inputs.doNotDisturb;
+        fireUserListsSettings.icon = inputs.icon;
+        fireUserListsSettings.lid = lid;
+        fireUserListsSettings.location = inputs.location || null;
+
+        fireUserListsSettings.$save().then(function() {});
       }
+      // return lists.update($routeParams.lid, inputs, function() {
+      //   users.updateList(listCreateCtrl.uid, inputs, $routeParams.lid);
+      //   listCreateCtrl.inputs = {};
+      //   $location.url('/list/' + $routeParams.lid);
+      // });
     };
 
     return users;

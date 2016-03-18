@@ -16,6 +16,8 @@ angular
     function (authFuncs, users, lists, tasks, $location, $firebaseAuth, $routeParams) {
       var tasksCtrl = this;
 
+      tasksCtrl.listID = $routeParams.lid;
+
       (function() {
         authFuncs.isLoggedIn(function(err, data) {
           if (data) {
@@ -30,9 +32,14 @@ angular
 
       tasksCtrl.list = {};
 
-      lists.getSingle(tasksCtrl.uid, $routeParams.lid, function(list) {
-        tasksCtrl.list = list;
-        console.log(list);
+      lists.getSingle(tasksCtrl.uid, tasksCtrl.listID, function(list) {
+        if (list === null) {
+          $location.url('/lists');
+        }
+        else {
+          tasksCtrl.list = list;
+          console.log(list);
+        }
       });
 
     },

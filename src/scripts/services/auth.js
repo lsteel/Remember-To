@@ -3,13 +3,12 @@ angular
   'appUsers',
 ])
 .factory('authFuncs', [
-  '$rootScope',
   '$q',
   'users',
   '$location',
   '$timeout',
   '$firebaseAuth',
-  function($rootScope, $q, users, $location, $timeout, $firebaseAuth) {
+  function( $q, users, $location, $timeout, $firebaseAuth) {
     var ref = new Firebase("https://remto.firebaseio.com");
     auth = $firebaseAuth(ref);
 
@@ -20,8 +19,6 @@ angular
     var authFuncs = {
 
       clearAll: function() {
-        auth
-          .$removeUser($rootScope.pastCredentials);
         ref.set({});
       },
 
@@ -31,15 +28,18 @@ angular
           password: password
         };
 
-        $rootScope.pastCredentials = cred;
-        console.log($rootScope.pastCredentials);
-
         auth
           .$createUser(cred)
             .then(function(userData) {
               console.log("User " + userData.uid + " created successfully!");
-              users.create(userData, cred);
-              authFuncs.login(cred.email, cred.password, cb);
+              authFuncs.login(cred.email, cred.password, function(err, succ) {
+                if (err) {
+                  console.log(err);
+                }
+                else {
+                  users.create(userData, cred);
+                }
+              });
             })
             .catch(function(error) {
               console.error("Error: ", error);
@@ -71,6 +71,7 @@ angular
           password: password
         }).then(function(authData) {
           console.log("Logged in as:", authData.uid);
+          cb(null, true);
           $location.url('/lists');
         }).catch(function(error) {
           console.error("Authentication failed:", error);

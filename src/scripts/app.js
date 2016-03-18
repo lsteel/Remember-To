@@ -27,7 +27,12 @@ angular
           controller: 'ListCreateController',
           controllerAs: 'listCreateCtrl',
         })
-        .when('/:lid', {
+        .when('/update-list/:lid', {
+          templateUrl: '/partials/list-creation-controller.html',
+          controller: 'ListCreateController',
+          controllerAs: 'listCreateCtrl',
+        })
+        .when('/list/:lid', {
           templateUrl: '/partials/tasks-controller.html',
           controller: 'TasksController',
           controllerAs: 'tasksCtrl',

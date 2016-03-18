@@ -9,8 +9,11 @@ angular
     'users',
     'lists',
     '$location',
-    function (authFuncs, users, lists, $location) {
+    '$routeParams',
+    function (authFuncs, users, lists, $location, $routeParams) {
       var listCreateCtrl = this;
+
+      listCreateCtrl.listID = $routeParams.lid;
 
       (function() {
         authFuncs.isLoggedIn(function(err, data) {
@@ -24,6 +27,24 @@ angular
       })();
 
       listCreateCtrl.inputs = {};
+
+      if (listCreateCtrl.listID !== undefined) {
+        lists.getSingle(listCreateCtrl.uid, listCreateCtrl.listID, function(list) {
+          if (list === null) {
+            $location.url('/lists');
+          }
+          else {
+            listCreateCtrl.list = list;
+            listCreateCtrl.inputs.name = listCreateCtrl.list.listName;
+            listCreateCtrl.inputs.doNotDisturb = listCreateCtrl.list.doNotDisturb;
+            listCreateCtrl.inputs.location = listCreateCtrl.list.location;
+            listCreateCtrl.inputs.color = listCreateCtrl.list.color;
+            listCreateCtrl.inputs.icon = listCreateCtrl.list.icon;
+            listCreateCtrl.inputs.users = listCreateCtrl.list.users;
+            listCreateCtrl.inputs.lsid = listCreateCtrl.list.userSettingsID;
+          }
+        });
+      }
 
       listCreateCtrl.selectOpts = {
         "type": "select",
@@ -42,11 +63,21 @@ angular
         inputs.location = inputs.location || null;
         inputs.color = inputs.color || listCreateCtrl.randomColor();
         inputs.icon = inputs.icon || "home";
-        return lists.create(listCreateCtrl.uid, inputs, function(listID, inputs) {
-          users.addList(listCreateCtrl.uid, inputs, listID);
-          listCreateCtrl.inputs = {};
-          $location.url('/lists');
-        });
+
+        if (listCreateCtrl.listID !== undefined) {
+          return lists.update(listCreateCtrl.listID, inputs, function() {
+            users.updateList(listCreateCtrl.uid, inputs.lsid, inputs, listCreateCtrl.listID);
+            listCreateCtrl.inputs = {};
+            $location.url('/list/' + listCreateCtrl.listID);
+          });
+        }
+        else {
+          return lists.create(listCreateCtrl.uid, inputs, function(listID, inputs) {
+            users.addList(listCreateCtrl.uid, inputs, listID);
+            listCreateCtrl.inputs = {};
+            $location.url('/lists');
+          });
+        }
       };
     },
   ]);

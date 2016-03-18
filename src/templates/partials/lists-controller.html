@@ -20,7 +20,7 @@
     <div class="lists-wrapper">
       <div class="list-container">
         <div class="list" ng-repeat="list in listsCtrl.userLists" ng-class="list.color + '-back'">
-          <a href="" ng-href="#/{{ list.lid }}"><span ng-class="'icon-' + list.icon"></span>{{ list.listName }}</a>
+          <a href="" ng-href="#/list/{{ list.lid }}"><span ng-class="'icon-' + list.icon"></span>{{ list.listName }}</a>
         </div>
       </div>
     </div>

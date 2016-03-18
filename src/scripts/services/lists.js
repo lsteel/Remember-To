@@ -28,18 +28,42 @@ angular
           });
         },
 
+        update: function(lid, inputs, cb) {
+          var listRef = new Firebase("https://remto.firebaseio.com/lists/" + lid);
+          var fireList = $firebaseObject(listRef);
+
+          fireList.listName = inputs.name;
+          fireList.users = inputs.users;
+          fireList.owners = inputs.users;
+          fireList.tasks = fireList.tasks || null;
+
+          fireList.$save().then(function() {
+            //console.log('List set.');
+            return cb();
+          }, function(error) {
+            console.log("Error:", error);
+          });
+        },
+
         getSingle: function(userID, lid, cb) {
           lists.getSingleSettings(userID, lid, function(listSettings, lid) {
             var list = {};
             var listRef = new Firebase("https://remto.firebaseio.com/lists/" + lid);
             var fireList = $firebaseObject(listRef);
             fireList.$loaded().then(function(fireList) {
-              list = fireList;
-              list.color = listSettings[0].color;
-              list.icon = listSettings[0].icon;
-              list.lid = listSettings[0].lid;
-              list.userSettingsID = listSettings[0].$id;
-              cb(list);
+              if (fireList.$value === null) {
+                cb(null);
+              }
+              else {
+                list = fireList;
+                list.doNotDisturb = listSettings[0].doNotDisturb;
+                list.location = listSettings[0].location;
+                list.color = listSettings[0].color;
+                list.icon = listSettings[0].icon;
+                list.lid = listSettings[0].lid;
+                list.userSettingsID = listSettings[0].$id;
+                cb(list);
+              }
             });
           });
         },
