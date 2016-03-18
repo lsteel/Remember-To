@@ -4,6 +4,7 @@ angular
     'LoginController',
     'ListsController',
     'ListCreateController',
+    'TasksController',
     'MainController',
     'firebase',
   ])

@@ -4,6 +4,14 @@
       "createdOn": 1457029645190,
       "name": "John Doe",
       "email": "asdf@gmail.com",
+      "settings": {
+        "49936e1c-3de9-4752-9a4d-a4833cc30774": {
+          "star-to-top": true,
+          "add-task-to-top": false,
+          "list-badge": "today/all",
+          "use-location": false
+        }
+      },
       "lists": [
         {
           "lid": "-KBxj-CDo-oajTK2wR9W",
@@ -25,14 +33,6 @@
           ]
         }
       ]
-    }
-  },
-  "settings": {
-    "49936e1c-3de9-4752-9a4d-a4833cc30774": {
-      "star-to-top": true,
-      "add-task-to-top": false,
-      "list-badge": "today/all",
-      "use-location": false
     }
   },
   "lists": {

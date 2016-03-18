@@ -2,13 +2,18 @@ angular
   .module('TasksController', [
     'appAuth',
     'appUsers',
+    'appLists',
+    'appTasks',
   ])
   .controller('TasksController', [
     'authFuncs',
     'users',
+    'lists',
+    'tasks',
     '$location',
     '$firebaseAuth',
-    function (authFuncs, users, $location, $firebaseAuth) {
+    '$routeParams',
+    function (authFuncs, users, lists, tasks, $location, $firebaseAuth, $routeParams) {
       var tasksCtrl = this;
 
       (function() {
@@ -23,14 +28,12 @@ angular
         });
       })();
 
-      tasksCtrl.signout = function(email, password) {
-        return authFuncs.logout();
-      };
+      tasksCtrl.list = {};
 
-      tasksCtrl.clearEverything = function() {
-        return authFuncs.clearAll();
-      };
-
+      lists.getSingle(tasksCtrl.uid, $routeParams.lid, function(list) {
+        tasksCtrl.list = list;
+        console.log(list);
+      });
 
     },
   ]);

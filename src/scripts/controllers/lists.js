@@ -29,7 +29,7 @@ angular
       })();
 
 
-      lists.get(listsCtrl.uid, function(fireLists) {
+      lists.getAll(listsCtrl.uid, function(fireLists) {
         listsCtrl.userLists = fireLists;
         console.log(listsCtrl.userLists);
       });
