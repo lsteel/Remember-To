@@ -1,10 +1,12 @@
 angular
   .module('RemToApp', [
     'ngRoute',
+    'ui.sortable',
     'LoginController',
     'ListsController',
     'ListCreateController',
     'TasksController',
+    'TaskCreateController',
     'MainController',
     'firebase',
   ])
@@ -27,7 +29,7 @@ angular
           controller: 'ListCreateController',
           controllerAs: 'listCreateCtrl',
         })
-        .when('/update-list/:lid', {
+        .when('/edit-list/:lid', {
           templateUrl: '/partials/list-creation-controller.html',
           controller: 'ListCreateController',
           controllerAs: 'listCreateCtrl',
@@ -36,6 +38,16 @@ angular
           templateUrl: '/partials/tasks-controller.html',
           controller: 'TasksController',
           controllerAs: 'tasksCtrl',
+        })
+        .when('/create-task', {
+          templateUrl: '/partials/task-creation-controller.html',
+          controller: 'TaskCreateController',
+          controllerAs: 'taskCreateCtrl',
+        })
+        .when('/edit-task/:tid', {
+          templateUrl: '/partials/list-creation-controller.html',
+          controller: 'ListCreateController',
+          controllerAs: 'listCreateCtrl',
         })
         .otherwise('/login');
     },

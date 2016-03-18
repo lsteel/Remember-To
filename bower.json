@@ -15,10 +15,11 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.7",
-    "bootstrap": "~3.3.5",
-    "angular-route": "~1.4.7",
-    "firebase": "~2.4.1",
-    "angularfire": "~1.1.4"
+    "bootstrap": "3.3.5",
+    "angular-route": "1.4.7",
+    "firebase": "2.4.1",
+    "angularfire": "1.1.4",
+    "angular-ui-sortable": "0.13.4",
+    "angular": "1.5.1"
   }
 }

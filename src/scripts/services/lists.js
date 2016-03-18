@@ -109,7 +109,10 @@ angular
               userLists[index].color = userListsSettings[index].color;
               userLists[index].icon = userListsSettings[index].icon;
               userLists[index].lid = userListsSettings[index].lid;
+              userLists[index].doNotDisturb = userListsSettings[index].doNotDisturb;
+              userLists[index].locations = userListsSettings[index].locations || null;
               userLists[index].userSettingsID = userListsSettings[index].$id;
+              userLists[index].sortOrder = userListsSettings[index].sortOrder;
               i++;
               if (i === array.length) {
                 cb(userLists);
