@@ -31,6 +31,7 @@ angular
 
 
       listsCtrl.dragControlListeners = {
+        longTouch: true,
         dragEnd: function() {
           i = 0;
           listsCtrl.userLists.forEach(function(item, index, array) {
@@ -52,15 +53,37 @@ angular
         }
       };
 
-      function listsGetAll() {
+      // lists.getAll(listsCtrl.uid, function(fireLists) {
+      //   listsCtrl.userLists = fireLists;
+      //   console.log(listsCtrl.userLists);
+      //   listsCtrl.userLists = $filter('orderBy')(listsCtrl.userLists, 'sortOrder');
+      // });
+
+      function getLists(cb) {
         lists.getAll(listsCtrl.uid, function(fireLists) {
-          listsCtrl.userLists = fireLists;
-          console.log(listsCtrl.userLists);
+          listsCtrl.userLists = fireLists.map(function(info) {
+            return info;
+          });
           listsCtrl.userLists = $filter('orderBy')(listsCtrl.userLists, 'sortOrder');
+          cb();
         });
       }
 
-      lists.watch(listsCtrl.uid, false, listsGetAll);
+      getLists(function() {
+        listsCtrl.userLists.forEach(function(item, index, array) {
+          lists.watchList(item.lid, function(changed) {
+            if (changed) {
+              getLists(function() {console.log('lists changed and updated.');});
+            }
+          });
+        });
+      });
+
+      lists.watchSettings(listsCtrl.uid, function(changed) {
+        if (changed) {
+          getLists(function() {console.log('lists settings updated.');});
+        }
+      });
 
       listsCtrl.signout = function(email, password) {
         return authFuncs.logout();

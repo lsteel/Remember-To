@@ -32,13 +32,17 @@ angular
 
       tasksCtrl.list = {};
 
-      lists.getSingle(tasksCtrl.uid, tasksCtrl.listID, function(list) {
-        if (list === null) {
-          $location.url('/lists');
-        }
-        else {
-          tasksCtrl.list = list;
-          console.log(list);
+      lists.watchList(tasksCtrl.listID, function(changed) {
+        if (changed) {
+          lists.getSingle(tasksCtrl.uid, tasksCtrl.listID, function(list) {
+            if (list === null) {
+              $location.url('/lists');
+            }
+            else {
+              tasksCtrl.list = list;
+              console.log(list);
+            }
+          });
         }
       });
 

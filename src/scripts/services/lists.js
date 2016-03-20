@@ -10,16 +10,20 @@ angular
 
       var lists = {
 
-        watch: function(userID, lid, func) {
-          var listsRef;
-          if (lid) {
-            listsRef = new Firebase("https://remto.firebaseio.com/lists/" + lid);
-          }
-          else {
-            listsRef = new Firebase("https://remto.firebaseio.com/users/" + userID + '/lists/');
-          }
-          var fireLists = $firebaseArray(listsRef);
-          fireLists.$watch(func);
+        watchList: function(lid, cb) {
+          var watchListsRef = new Firebase("https://remto.firebaseio.com/lists/" + lid);
+          var watchListsArr = $firebaseArray(watchListsRef);
+          watchListsArr.$watch(function() {
+              cb(true);
+          });
+        },
+
+        watchSettings: function(uid, cb) {
+          var watchListsRef = new Firebase("https://remto.firebaseio.com/users/" + uid + '/lists/');
+          var watchListsArr = $firebaseArray(watchListsRef);
+          watchListsArr.$watch(function() {
+              cb(true);
+          });
         },
 
         create: function(userID, inputs, cb) {

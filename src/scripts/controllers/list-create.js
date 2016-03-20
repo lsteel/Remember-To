@@ -29,20 +29,24 @@ angular
       listCreateCtrl.inputs = {};
 
       if (listCreateCtrl.listID !== undefined) {
-        lists.getSingle(listCreateCtrl.uid, listCreateCtrl.listID, function(list) {
-          if (list === null) {
-            $location.url('/lists');
-          }
-          else {
-            listCreateCtrl.list = list;
-            listCreateCtrl.inputs.name = listCreateCtrl.list.listName;
-            listCreateCtrl.inputs.doNotDisturb = listCreateCtrl.list.doNotDisturb;
-            listCreateCtrl.inputs.location = listCreateCtrl.list.location;
-            listCreateCtrl.inputs.color = listCreateCtrl.list.color;
-            listCreateCtrl.inputs.sortOrder = listCreateCtrl.list.sortOrder;
-            listCreateCtrl.inputs.icon = listCreateCtrl.list.icon;
-            listCreateCtrl.inputs.users = listCreateCtrl.list.users;
-            listCreateCtrl.inputs.lsid = listCreateCtrl.list.userSettingsID;
+        lists.watchList(listCreateCtrl.listID, function(changed) {
+          if (changed) {
+            lists.getSingle(listCreateCtrl.uid, listCreateCtrl.listID, function(list) {
+              if (list === null) {
+                $location.url('/lists');
+              }
+              else {
+                listCreateCtrl.list = list;
+                listCreateCtrl.inputs.name = listCreateCtrl.list.listName;
+                listCreateCtrl.inputs.doNotDisturb = listCreateCtrl.list.doNotDisturb;
+                listCreateCtrl.inputs.location = listCreateCtrl.list.location;
+                listCreateCtrl.inputs.color = listCreateCtrl.list.color;
+                listCreateCtrl.inputs.sortOrder = listCreateCtrl.list.sortOrder;
+                listCreateCtrl.inputs.icon = listCreateCtrl.list.icon;
+                listCreateCtrl.inputs.users = listCreateCtrl.list.users;
+                listCreateCtrl.inputs.lsid = listCreateCtrl.list.userSettingsID;
+              }
+            });
           }
         });
       }
