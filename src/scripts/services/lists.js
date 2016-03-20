@@ -10,6 +10,18 @@ angular
 
       var lists = {
 
+        watch: function(userID, lid, func) {
+          var listsRef;
+          if (lid) {
+            listsRef = new Firebase("https://remto.firebaseio.com/lists/" + lid);
+          }
+          else {
+            listsRef = new Firebase("https://remto.firebaseio.com/users/" + userID + '/lists/');
+          }
+          var fireLists = $firebaseArray(listsRef);
+          fireLists.$watch(func);
+        },
+
         create: function(userID, inputs, cb) {
           var listsRef = new Firebase("https://remto.firebaseio.com/lists/");
           var listPushRef = listsRef.push();
@@ -61,6 +73,7 @@ angular
                 list.color = listSettings[0].color;
                 list.icon = listSettings[0].icon;
                 list.lid = listSettings[0].lid;
+                list.sortOrder = listSettings[0].sortOrder;
                 list.userSettingsID = listSettings[0].$id;
                 cb(list);
               }

@@ -29,8 +29,9 @@ angular
         });
       })();
 
-      listsCtrl.sortableOptions = {
-        stop: function() {
+
+      listsCtrl.dragControlListeners = {
+        dragEnd: function() {
           i = 0;
           listsCtrl.userLists.forEach(function(item, index, array) {
             item.sortOrder = index + 1;
@@ -45,19 +46,21 @@ angular
             fireList.$save().then(function(fireList) {
               i++;
               if (i === array.length) {
-                
               }
             });
           });
         }
       };
 
+      function listsGetAll() {
+        lists.getAll(listsCtrl.uid, function(fireLists) {
+          listsCtrl.userLists = fireLists;
+          console.log(listsCtrl.userLists);
+          listsCtrl.userLists = $filter('orderBy')(listsCtrl.userLists, 'sortOrder');
+        });
+      }
 
-      lists.getAll(listsCtrl.uid, function(fireLists) {
-        listsCtrl.userLists = fireLists;
-        console.log(listsCtrl.userLists);
-        listsCtrl.userLists = $filter('orderBy')(listsCtrl.userLists, 'sortOrder');
-      });
+      lists.watch(listsCtrl.uid, false, listsGetAll);
 
       listsCtrl.signout = function(email, password) {
         return authFuncs.logout();

@@ -39,6 +39,7 @@ angular
             listCreateCtrl.inputs.doNotDisturb = listCreateCtrl.list.doNotDisturb;
             listCreateCtrl.inputs.location = listCreateCtrl.list.location;
             listCreateCtrl.inputs.color = listCreateCtrl.list.color;
+            listCreateCtrl.inputs.sortOrder = listCreateCtrl.list.sortOrder;
             listCreateCtrl.inputs.icon = listCreateCtrl.list.icon;
             listCreateCtrl.inputs.users = listCreateCtrl.list.users;
             listCreateCtrl.inputs.lsid = listCreateCtrl.list.userSettingsID;

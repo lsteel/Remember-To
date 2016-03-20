@@ -3,12 +3,13 @@ angular
   'appUsers',
 ])
 .factory('authFuncs', [
+  '$rootScope',
   '$q',
   'users',
   '$location',
   '$timeout',
   '$firebaseAuth',
-  function( $q, users, $location, $timeout, $firebaseAuth) {
+  function( $rootScope, $q, users, $location, $timeout, $firebaseAuth) {
     var ref = new Firebase("https://remto.firebaseio.com");
     auth = $firebaseAuth(ref);
 
@@ -71,11 +72,11 @@ angular
           password: password
         }).then(function(authData) {
           console.log("Logged in as:", authData.uid);
-          cb(null, true);
+          cb(false, true);
           $location.url('/lists');
         }).catch(function(error) {
           console.error("Authentication failed:", error);
-          cb(error, null);
+          cb(error, false);
         });
 
 
@@ -99,7 +100,7 @@ angular
 
       logout: function() {
         auth.$unauth();
-        $location.url('/login');
+        $location.url('/');
       },
 
       isLoggedIn: function(cb) {

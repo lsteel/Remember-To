@@ -1,7 +1,7 @@
 angular
   .module('RemToApp', [
     'ngRoute',
-    'ui.sortable',
+    'as.sortable',
     'LoginController',
     'ListsController',
     'ListCreateController',

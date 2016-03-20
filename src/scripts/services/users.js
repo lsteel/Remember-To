@@ -65,6 +65,7 @@ angular
         fireUserListsSettings.doNotDisturb = inputs.doNotDisturb;
         fireUserListsSettings.icon = inputs.icon;
         fireUserListsSettings.lid = lid;
+        fireUserListsSettings.sortOrder = inputs.sortOrder;
         fireUserListsSettings.location = inputs.location || null;
 
         fireUserListsSettings.$save().then(function() {});
