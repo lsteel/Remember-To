@@ -9,10 +9,10 @@
       <a href="" ng-show="tasksCtrl.addTodo.name" ng-click="tasksCtrl.submit(tasksCtrl.addTodo)" class="btn btn-link">done</a>
     </header>
     <div class="lists-wrapper col-xs-12">
-      <div data-as-sortable="tasksCtrl.dragControlListeners" data-ng-model="tasksCtrl.userLists" class="task-container">
-        <div data-as-sortable-item class="task" ng-repeat="list in tasksCtrl.userLists">
+      <div data-as-sortable="tasksCtrl.dragControlListeners" data-ng-model="tasksCtrl.list.tasks" class="task-container">
+        <div data-as-sortable-item class="task" ng-repeat="task in tasksCtrl.list.tasks">
           <div data-as-sortable-item-handle>
-            <a href="" >{{ task.taskName }}</a>
+            <a href="" >{{ task.name }}</a>
           </div>
         </div>
       </div>

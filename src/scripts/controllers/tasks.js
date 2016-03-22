@@ -40,7 +40,6 @@ angular
             }
             else {
               tasksCtrl.list = list;
-              console.log(list);
             }
           });
         }
