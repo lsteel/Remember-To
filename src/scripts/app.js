@@ -39,15 +39,15 @@ angular
           controller: 'TasksController',
           controllerAs: 'tasksCtrl',
         })
-        .when('/create-task', {
+        .when('/list/:lid/create-task', {
           templateUrl: '/partials/task-creation-controller.html',
           controller: 'TaskCreateController',
           controllerAs: 'taskCreateCtrl',
         })
-        .when('/edit-task/:tid', {
-          templateUrl: '/partials/list-creation-controller.html',
-          controller: 'ListCreateController',
-          controllerAs: 'listCreateCtrl',
+        .when('/list/:lid/edit-task/:tid', {
+          templateUrl: '/partials/task-creation-controller.html',
+          controller: 'TaskCreateController',
+          controllerAs: 'taskCreateCtrl',
         })
         .otherwise('/login');
     },

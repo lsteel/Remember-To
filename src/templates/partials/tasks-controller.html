@@ -5,10 +5,24 @@
         <a href="#/lists">^</a>
       </div>
       <h1>{{ tasksCtrl.list.listName }}</h1>
-      <a href="" ng-href="#/edit-list/{{ tasksCtrl.listID }}" class="btn btn-link">edit</a>
+      <a href="" ng-href="#/edit-list/{{ tasksCtrl.listID }}" ng-show="!tasksCtrl.addTodo.name" class="btn btn-link">edit</a>
+      <a href="" ng-show="tasksCtrl.addTodo.name" ng-click="tasksCtrl.submit(tasksCtrl.addTodo)" class="btn btn-link">done</a>
     </header>
-    <div class="content-container col-xs-12">
-      This is the tasks/single list page!
+    <div class="lists-wrapper col-xs-12">
+      <div data-as-sortable="tasksCtrl.dragControlListeners" data-ng-model="tasksCtrl.userLists" class="task-container">
+        <div data-as-sortable-item class="task" ng-repeat="list in tasksCtrl.userLists">
+          <div data-as-sortable-item-handle>
+            <a href="" >{{ task.taskName }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="add-todo-container col-xs-12">
+      <form name="myForm" ng-submit="tasksCtrl.submit(tasksCtrl.addTodo)" validate>
+        <input type="text" name="todo" placeholder="add to-do" ng-model="tasksCtrl.addTodo.name" maxlength="50" required>
+        <span ng-if="tasksCtrl.addTodo.name" ng-model="tasksCtrl.addTodo.star" ng-click="tasksCtrl.addTodo.star = !tasksCtrl.addTodo.star">{{(tasksCtrl.addTodo.star ? '&#9733;' : '&#9734;')}}</span>
+        <button ng-disabled="myForm.$invalid" type="submit" name="submit" class="hidden">send</button>
+      </form>
     </div>
   </div>
 </div>

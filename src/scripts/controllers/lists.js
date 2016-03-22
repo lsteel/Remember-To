@@ -61,9 +61,7 @@ angular
 
       function getLists(cb) {
         lists.getAll(listsCtrl.uid, function(fireLists) {
-          listsCtrl.userLists = fireLists.map(function(info) {
-            return info;
-          });
+          listsCtrl.userLists = fireLists;
           listsCtrl.userLists = $filter('orderBy')(listsCtrl.userLists, 'sortOrder');
           cb();
         });

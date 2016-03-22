@@ -6,13 +6,13 @@
       </div>
     </header>
     <div class="form-container col-xs-12">
-      <form name="myForm" ng-submit="listCreateCtrl.submit(listCreateCtrl.inputs)" validate>
-        <input type="text" id="name" name="name" placeholder="list name" ng-model="listCreateCtrl.inputs.name" maxlength="50" required>
-        <input type="checkbox" ng-model="listCreateCtrl.inputs.doNotDisturb" name="do-not-disturb" ng-true-value="true" ng-false-value="false">
+      <form name="myForm" ng-submit="taskCreateCtrl.submit(taskCreateCtrl.inputs)" validate>
+        <input type="text" id="name" name="name" placeholder="task name" ng-model="taskCreateCtrl.inputs.name" maxlength="50" required>
+        <select ng-model="taskCreateCtrl.inputs.list" ng-options="v for v in taskCreateCtrl.selectOpts.values"></select>
+        <input type="checkbox" ng-model="taskCreateCtrl.inputs.doNotDisturb" name="do-not-disturb" ng-true-value="true" ng-false-value="false">
         do not disturb
-        <input type="text" id="location" name="location" placeholder="lat, long" ng-model="listCreateCtrl.inputs.location" maxlength="250">
-        <select ng-model="listCreateCtrl.inputs.color" ng-options="v for v in listCreateCtrl.selectOpts.values">
-  </select>
+        <input type="text" id="location" name="location" placeholder="lat, long" ng-model="taskCreateCtrl.inputs.location" maxlength="250">
+
         <button ng-disabled="myForm.$invalid" type="submit" name="submit" class="btn btn-info">send</button>
       </form>
     </div>

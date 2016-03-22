@@ -2,7 +2,7 @@
   <div class="col-xs-12">
     <header class="col-xs-12">
       <div class="back-button">
-        <a href="#/lists">^</a>
+        <a href="#/lists" ng-href="{{ '#/' + (listCreateCtrl.listID ? 'list/' + listCreateCtrl.listID : 'lists') }}">^</a>
       </div>
     </header>
     <div class="form-container col-xs-12">

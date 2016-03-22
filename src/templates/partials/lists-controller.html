@@ -21,15 +21,11 @@
       <div data-as-sortable="listsCtrl.dragControlListeners" data-ng-model="listsCtrl.userLists" class="list-container">
         <div data-as-sortable-item class="list" ng-repeat="list in listsCtrl.userLists" ng-class="list.color + '-back'">
           <div data-as-sortable-item-handle>
-            <a href="" ng-href="#/list/{{ list.lid }}" ng-click="$location.url('/list/' + list.lid)"><span ng-class="'icon-' + list.icon"></span>{{ list.listName }}</a>
+            <a href="" ng-href="#/list/{{ list.lid }}"><span ng-class="'icon-' + list.icon"></span>{{ list.listName }}</a>
           </div>
         </div>
       </div>
     </div>
     <a href="#/create-list" class="btn btn-link">+ list</a>
-    <br><br><br>
-    <button ng-click="listsCtrl.clearEverything()" class="btn btn-xs btn-danger">
-      CLEAR EVERYTHING
-    </button>
   </div>
 </div>

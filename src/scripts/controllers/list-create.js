@@ -26,7 +26,23 @@ angular
         });
       })();
 
-      listCreateCtrl.inputs = {};
+
+      listCreateCtrl.selectOpts = {
+        "type": "select",
+        "name": "color",
+        "values": [ "red", "orange", "yellow", "green",  "blue", "violet"]
+      };
+
+      listCreateCtrl.randomColor = function() {
+        var color = listCreateCtrl.selectOpts.values[Math.floor(Math.random() * listCreateCtrl.selectOpts.values.length)];
+        return color;
+      };
+
+      var color = listCreateCtrl.randomColor();
+
+      listCreateCtrl.inputs = {
+        "color": color
+      };
 
       if (listCreateCtrl.listID !== undefined) {
         lists.watchList(listCreateCtrl.listID, function(changed) {
@@ -50,17 +66,6 @@ angular
           }
         });
       }
-
-      listCreateCtrl.selectOpts = {
-        "type": "select",
-        "name": "color",
-        "values": [ "red", "orange", "yellow", "green",  "blue", "violet"]
-      };
-
-      listCreateCtrl.randomColor = function() {
-        var color = listCreateCtrl.selectOpts.values[Math.floor(Math.random() * listCreateCtrl.selectOpts.values.length)];
-        return color;
-      };
 
       listCreateCtrl.submit = function(inputs) {
         inputs.users = inputs.users || listCreateCtrl.uid;

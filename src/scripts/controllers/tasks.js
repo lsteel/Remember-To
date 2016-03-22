@@ -46,5 +46,15 @@ angular
         }
       });
 
+      tasksCtrl.submit = function(inputs) {
+
+        inputs.star = inputs.star || false;
+        tasks.create(inputs, tasksCtrl.listID, function(tid, inputs) {
+          console.log(tid);
+          tasksCtrl.addTodo = null;
+        });
+
+      };
+
     },
   ]);
