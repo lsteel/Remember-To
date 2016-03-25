@@ -34,12 +34,11 @@ angular
           var fireLists = $firebaseObject(listPushRef);
 
           var listKey = fireLists.$id;
-          fireLists.listName = inputs.name;
+          fireLists.listName = inputs.name.trim().toLowerCase();
           fireLists.users = [inputs.users];
           fireLists.owners = [inputs.users];
 
           fireLists.$save().then(function() {
-            //console.log('List set.');
             return cb(listKey, inputs);
           }, function(error) {
             console.log("Error:", error);
@@ -49,18 +48,28 @@ angular
         update: function(lid, inputs, cb) {
           var listRef = new Firebase("https://remto.firebaseio.com/lists/" + lid);
           var fireList = $firebaseObject(listRef);
-
-          fireList.listName = inputs.name;
-          fireList.users = inputs.users;
-          fireList.owners = inputs.users;
-          fireList.tasks = fireList.tasks || null;
-
-          fireList.$save().then(function() {
-            //console.log('List set.');
-            return cb();
-          }, function(error) {
-            console.log("Error:", error);
+          fireList.$loaded().then(function() {
+            fireList.listName = inputs.name.trim().toLowerCase();
+            fireList.users = inputs.users;
+            fireList.owners = inputs.users;
+            cb();
+            fireList.$save().then(function() {
+            });
           });
+
+          // var fireList = $firebaseObject(listRef);
+          //
+          // fireList.listName = inputs.name;
+          // fireList.users = inputs.users;
+          // fireList.owners = inputs.users;
+          // fireList.tasks = fireList.tasks || null;
+          //
+          // fireList.$save().then(function() {
+          //   //console.log('List set.');
+          //   return cb();
+          // }, function(error) {
+          //   console.log("Error:", error);
+          // });
         },
 
         getSingle: function(userID, lid, cb) {

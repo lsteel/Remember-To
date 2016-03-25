@@ -46,7 +46,8 @@ angular
           "doNotDisturb": inputs.doNotDisturb,
           "color": inputs.color,
           "icon": inputs.icon,
-          "locations": [ inputs.location ]
+          "locations": [ inputs.location ],
+          "isOwner": true
         };
 
         lists.$add(listSettings).then();
@@ -57,7 +58,6 @@ angular
       },
 
       updateList: function(uid, lsid, inputs, lid) {
-        console.log(lsid);
         var userListsSettingsRef = new Firebase("https://remto.firebaseio.com/users/" + uid + "/lists/" + lsid);
         var fireUserListsSettings = $firebaseObject(userListsSettingsRef);
 
@@ -65,8 +65,9 @@ angular
         fireUserListsSettings.doNotDisturb = inputs.doNotDisturb;
         fireUserListsSettings.icon = inputs.icon;
         fireUserListsSettings.lid = lid;
-        fireUserListsSettings.sortOrder = inputs.sortOrder;
+        fireUserListsSettings.sortOrder = inputs.sortOrder || null;
         fireUserListsSettings.location = inputs.location || null;
+        fireUserListsSettings.isOwner = true;
 
         fireUserListsSettings.$save().then(function() {});
       }

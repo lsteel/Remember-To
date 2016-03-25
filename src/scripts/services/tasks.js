@@ -9,20 +9,38 @@ angular
 
         create: function(inputs, lid, cb) {
           var tasksRef = new Firebase("https://remto.firebaseio.com/lists/" + lid + "/tasks/");
-          var taskPushRef = tasksRef.push();
-          var fireTasks = $firebaseObject(taskPushRef);
-          console.log(tasksRef);
+          var fireTasks = $firebaseArray(tasksRef);
 
-          var taskKey = fireTasks.$id;
-          fireTasks.name = inputs.name;
-          fireTasks.star = inputs.star;
-          fireTasks.completed = false;
+          var task = {
+            'name': inputs.name,
+            'star': inputs.star,
+            'completed': false
+          };
 
-          fireTasks.$save().then(function() {
-            //console.log('List set.');
+          fireTasks.$add(task).then(function(ref) {
+            var taskKey = ref.key();
+            tasksRef.child(taskKey).child('tid').set(taskKey);
             return cb(taskKey, inputs);
           }, function(error) {
             console.log("Error:", error);
+          });
+        },
+
+        star: function(lid, tid) {
+          var tasksRef = new Firebase("https://remto.firebaseio.com/lists/" + lid + "/tasks/" + tid);
+          var fireTask = $firebaseObject(tasksRef);
+
+          fireTask.$loaded().then(function() {
+            tasksRef.update({'star': !fireTask.star});
+          });
+        },
+
+        completed: function(lid, tid) {
+          var tasksRef = new Firebase("https://remto.firebaseio.com/lists/" + lid + "/tasks/" + tid);
+          var fireTask = $firebaseObject(tasksRef);
+
+          fireTask.$loaded().then(function() {
+            tasksRef.update({'completed': !fireTask.completed});
           });
         }
         //

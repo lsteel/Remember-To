@@ -9,10 +9,18 @@
       <a href="" ng-show="tasksCtrl.addTodo.name" ng-click="tasksCtrl.submit(tasksCtrl.addTodo)" class="btn btn-link">done</a>
     </header>
     <div class="lists-wrapper col-xs-12">
-      <div data-as-sortable="tasksCtrl.dragControlListeners" data-ng-model="tasksCtrl.list.tasks" class="task-container">
-        <div data-as-sortable-item class="task" ng-repeat="task in tasksCtrl.list.tasks">
+      <div data-as-sortable="tasksCtrl.dragControlListeners" data-ng-model="tasksCtrl.tasks" class="task-container">
+        <div data-as-sortable-item class="task" ng-repeat="todo in tasksCtrl.tasks">
           <div data-as-sortable-item-handle>
-            <a href="" >{{ task.name }}</a>
+            <span style="font-family: 'arial';font-size: 200%;cursor: crosshair;" ng-click="tasksCtrl.completeIt(tasksCtrl.listID, todo.tid)">
+              {{ (todo.completed ? '☑' : '☐') }}
+            </span>
+            <a href="" ng-href="#/list/{{ tasksCtrl.listID }}/edit-task/{{todo.tid}}">
+              <span ng-class="{'strike-through': todo.completed}" >{{ todo.name }}</span>
+            </a>
+            <span style="font-family: 'arial';font-size: 200%;cursor: crosshair;" ng-click="tasksCtrl.starIt(tasksCtrl.listID, todo.tid)">
+              {{(todo.star ? '★' : '☆')}}
+            </span>
           </div>
         </div>
       </div>
@@ -20,7 +28,7 @@
     <div class="add-todo-container col-xs-12">
       <form name="myForm" ng-submit="tasksCtrl.submit(tasksCtrl.addTodo)" validate>
         <input type="text" name="todo" placeholder="add to-do" ng-model="tasksCtrl.addTodo.name" maxlength="50" required>
-        <span ng-if="tasksCtrl.addTodo.name" ng-model="tasksCtrl.addTodo.star" ng-click="tasksCtrl.addTodo.star = !tasksCtrl.addTodo.star">{{(tasksCtrl.addTodo.star ? '&#9733;' : '&#9734;')}}</span>
+        <span ng-if="tasksCtrl.addTodo.name" ng-model="tasksCtrl.addTodo.star" ng-click="tasksCtrl.addTodo.star = !tasksCtrl.addTodo.star">{{(tasksCtrl.addTodo.star ? '★' : '☆')}}</span>
         <button ng-disabled="myForm.$invalid" type="submit" name="submit" class="hidden">send</button>
       </form>
     </div>
