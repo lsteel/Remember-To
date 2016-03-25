@@ -5,10 +5,11 @@ angular
 ])
 .factory('users', [
   '$rootScope',
+  '$location',
   '$firebaseObject',
   '$firebaseArray',
   'userSettings',
-  function($rootScope, $firebaseObject, $firebaseArray, userSettings) {
+  function($rootScope, $location, $firebaseObject, $firebaseArray, userSettings) {
 
     var users = {
 
@@ -50,7 +51,8 @@ angular
           "isOwner": true
         };
 
-        lists.$add(listSettings).then();
+        lists.$add(listSettings).then(function() {
+        });
         lists = $firebaseArray(ref);
         lists.$loaded().then(function() {});
 

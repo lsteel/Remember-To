@@ -84,8 +84,8 @@ angular
         else {
           return lists.create(listCreateCtrl.uid, inputs, function(listID, inputs) {
             users.addList(listCreateCtrl.uid, inputs, listID);
+            $location.url('/list/' + listID);
             listCreateCtrl.inputs = {};
-            $location.url('/lists');
           });
         }
       };

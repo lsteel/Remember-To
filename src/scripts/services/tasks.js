@@ -12,7 +12,7 @@ angular
           var fireTasks = $firebaseArray(tasksRef);
 
           var task = {
-            'name': inputs.name,
+            'name': inputs.name.trim().toLowerCase(),
             'star': inputs.star,
             'completed': false
           };
