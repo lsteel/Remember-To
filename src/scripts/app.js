@@ -8,6 +8,7 @@ angular
     'ListCreateController',
     'TasksController',
     'TaskCreateController',
+    'TaskEditController',
     'MainController',
     'loadingDirective',
     'firebase',
@@ -41,15 +42,15 @@ angular
           controller: 'TasksController',
           controllerAs: 'tasksCtrl',
         })
-        .when('/list/:lid/create-task', {
+        .when('/create-task', {
           templateUrl: '/partials/task-creation-controller.html',
           controller: 'TaskCreateController',
           controllerAs: 'taskCreateCtrl',
         })
         .when('/list/:lid/edit-task/:tid', {
-          templateUrl: '/partials/task-creation-controller.html',
-          controller: 'TaskCreateController',
-          controllerAs: 'taskCreateCtrl',
+          templateUrl: '/partials/task-edit-controller.html',
+          controller: 'TaskEditController',
+          controllerAs: 'taskEditCtrl',
         })
         .otherwise('/login');
     },

@@ -8,11 +8,12 @@ angular
     'authFuncs',
     'users',
     'lists',
+    '$timeout',
     '$location',
     '$firebaseAuth',
     '$firebaseObject',
     '$filter',
-    function (authFuncs, users, lists, $location, $firebaseAuth, $firebaseObject, $filter) {
+    function (authFuncs, users, lists, $timeout, $location, $firebaseAuth, $firebaseObject, $filter) {
       var listsCtrl = this;
       listsCtrl.loading = true;
 
@@ -81,7 +82,11 @@ angular
 
       lists.watchSettings(listsCtrl.uid, function(changed) {
         if (changed) {
-          getLists(function() {console.log('lists settings updated.');});
+          listsCtrl.loading = true;
+          getLists(function() {
+            console.log('lists settings updated.');
+            listsCtrl.loading = false;
+          });
         }
       });
 
