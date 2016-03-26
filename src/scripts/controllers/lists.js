@@ -14,6 +14,7 @@ angular
     '$filter',
     function (authFuncs, users, lists, $location, $firebaseAuth, $firebaseObject, $filter) {
       var listsCtrl = this;
+      listsCtrl.loading = true;
 
       listsCtrl.userLists = [];
 
@@ -68,6 +69,7 @@ angular
       }
 
       getLists(function() {
+        listsCtrl.loading = false;
         listsCtrl.userLists.forEach(function(item, index, array) {
           lists.watchList(item.lid, function(changed) {
             if (changed) {

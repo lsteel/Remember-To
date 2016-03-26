@@ -17,6 +17,7 @@ angular
   '$routeParams',
   function (authFuncs, users, lists, tasks, $filter, $location, $firebaseAuth, $firebaseObject, $routeParams) {
     var tasksCtrl = this;
+    tasksCtrl.loading = true;
 
     tasksCtrl.listID = $routeParams.lid;
 
@@ -59,6 +60,7 @@ angular
     lists.watchList(tasksCtrl.listID, function(changed) {
       if (changed) {
         lists.getSingle(tasksCtrl.uid, tasksCtrl.listID, function(list) {
+          tasksCtrl.loading = false;
           if (list === null) {
             $location.url('/lists');
           }

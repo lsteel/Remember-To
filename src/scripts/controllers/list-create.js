@@ -12,6 +12,7 @@ angular
     '$routeParams',
     function (authFuncs, users, lists, $location, $routeParams) {
       var listCreateCtrl = this;
+      listCreateCtrl.loading = true;
 
       listCreateCtrl.listID = $routeParams.lid;
 
@@ -61,10 +62,14 @@ angular
                 listCreateCtrl.inputs.icon = listCreateCtrl.list.icon;
                 listCreateCtrl.inputs.users = listCreateCtrl.list.users;
                 listCreateCtrl.inputs.lsid = listCreateCtrl.list.userSettingsID;
+                listCreateCtrl.loading = false;
               }
             });
           }
         });
+      }
+      else {
+        listCreateCtrl.loading = false;
       }
 
       listCreateCtrl.submit = function(inputs) {

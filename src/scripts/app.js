@@ -1,6 +1,7 @@
 angular
   .module('RemToApp', [
     'ngRoute',
+    'ngAnimate',
     'as.sortable',
     'LoginController',
     'ListsController',
@@ -8,6 +9,7 @@ angular
     'TasksController',
     'TaskCreateController',
     'MainController',
+    'loadingDirective',
     'firebase',
   ])
   .config([
