@@ -5,13 +5,15 @@ angular
     'appTasks',
   ])
   .controller('TaskCreateController', [
+    '$rootScope',
     'authFuncs',
     'users',
     'tasks',
     '$location',
     '$routeParams',
-    function (authFuncs, users, tasks, $location, $routeParams) {
-      // var taskCreateCtrl = this;
+    function ($rootScope, authFuncs, users, tasks, $location, $routeParams) {
+      var taskCreateCtrl = this;
+      $rootScope.loading = false;
       //
       // taskCreateCtrl.listID = $routeParams.lid;
       // taskCreateCtrl.taskID = $routeParams.tid;

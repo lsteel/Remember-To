@@ -2,25 +2,158 @@
 
 /* Mobile first queries */
 
-/* Larger than mobile */
-@media (min-width: 400px) {} //remove brackets before using section
+
+/* Width Queries */
+
+@media (min-width: 320px) {} //Remove {} before use
 
 
-/* Larger than phablet */
-@media (min-width: 550px){} //remove brackets before using section
+@media (min-width: 550px) {} //Remove {} before use
 
 
-/* Larger than tablet */
-@media (min-width: 750px){} //remove brackets before using section
+@media (min-width: 768px) {} //Remove {} before use
 
 
-/* Larger than desktop */
-@media (min-width: 1024px){} //remove brackets before using section
+@media (min-width: 992px) {} //Remove {} before use
 
 
-/* Turn on background video */
-@media (min-width: 1025px){} //remove brackets before using section
+@media (min-width: 1200px) {} //Remove {} before use
 
 
-/* Larger than Desktop HD */
-@media (min-width: 1200px) {} //remove brackets before using section
+
+/* Height Queries */
+
+@media (min-height: 480px)
+
+  .white-hand-container
+    display block
+    img
+      width 113px
+
+
+@media (min-height: 550px)
+
+  .white-hand-container
+    img
+      width 150px
+
+
+@media (min-height: 630px)
+
+  .white-hand-container
+    img
+      width 190px
+
+
+
+@media (min-height: 768px)
+
+  .login-title
+    margin-top 50px
+    font-size 250%
+
+  .white-hand-container
+    img
+      width 265px
+
+
+@media (min-height: 1024px)
+
+  .login-title
+    margin-top 100px
+    font-size 300%
+
+  .white-hand-container
+    img
+      width 350px
+
+
+@media (min-height: 1200px)
+
+  .login-title
+    margin-top 200px
+    font-size 350%
+
+  .white-hand-container
+    img
+      width 60%
+      max-width 425px
+
+
+
+
+
+
+
+
+
+// /* mobile portrait */
+// @media (min-width: 320px) and (min-height: 480px)
+//
+//   .white-hand-container
+//     display block
+//
+// /* mobile landscape */
+// @media (min-width: 480px)
+//
+//   .white-hand-container
+//     display none
+//
+// /* mobile tall portrait */
+// @media (min-width: 320px) and (min-height: 550px)
+//
+//   .white-hand-container
+//     display block
+//     img
+//       width 65%
+//
+// /* mobile tall landscape */
+// @media (min-width: 550px) and (min-height: 320px)
+//
+//   .white-hand-container
+//     display none
+//
+// /* phablet portrait */
+// @media (min-width: 550px) and (min-height: 800px)
+//
+//   .white-hand-container
+//     display block
+//     img
+//       width 65%
+//
+//
+// /* phablet landscape */
+// @media (min-width: 800px) and (min-height: 550px)
+//
+//   .white-hand-container
+//     display block
+//     img
+//       width 25%
+//
+// /* tablet portrait */
+// @media (min-width: 768px) and (min-height: 1024px)
+//
+//   .login-title
+//     font-size 300%
+//
+//   .white-hand-container
+//     display block
+//     img
+//       width 75%
+//
+//
+// /* tablet landscape */
+// @media (min-width: 1000px) and (min-height: 700px)
+//
+//   .white-hand-container
+//     display block
+//     img
+//       width 50%
+//
+//
+// /* desktop */
+// @media (min-width: 992px){} //remove brackets before using section
+//
+//
+// /* desktop HD */
+// @media (min-width: 1200px) {} //remove brackets before using section

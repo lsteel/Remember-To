@@ -61,7 +61,7 @@ function showResolution() {
 }
 
 function everySize() {
-	$('html,body').css({
+	$('.window-size').css({
 		'height' : 'auto',
 		'min-height' : $(window).height() + 'px'
 	});

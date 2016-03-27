@@ -8,6 +8,7 @@ angular
     '$firebaseAuth',
     function (authFuncs, $location, $firebaseAuth) {
       var loginCtrl = this;
+      $rootScope.loading = false;
 
       (function() {
         authFuncs.isLoggedIn(function(err, data) {});

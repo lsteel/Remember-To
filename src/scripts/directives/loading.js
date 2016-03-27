@@ -6,7 +6,7 @@ angular
       return {
         restrict: 'AE',
         scope: {},
-        template: '<img src="/images/remember-to-loading.gif" />',
+        template: '',
         link: function(scope, elem, attrs) {
           // scope.logoutClickHandler = function() {
           //   auth.logout().then(function() {

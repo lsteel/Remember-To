@@ -6,6 +6,7 @@ angular
   'appTasks',
 ])
 .controller('TasksController', [
+  '$rootScope',
   'authFuncs',
   'users',
   'lists',
@@ -15,9 +16,9 @@ angular
   '$firebaseAuth',
   '$firebaseObject',
   '$routeParams',
-  function (authFuncs, users, lists, tasks, $filter, $location, $firebaseAuth, $firebaseObject, $routeParams) {
+  function ($rootScope, authFuncs, users, lists, tasks, $filter, $location, $firebaseAuth, $firebaseObject, $routeParams) {
     var tasksCtrl = this;
-    tasksCtrl.loading = true;
+    $rootScope.loading = true;
 
     tasksCtrl.listID = $routeParams.lid;
 
@@ -60,7 +61,7 @@ angular
     lists.watchList(tasksCtrl.listID, function(changed) {
       if (changed) {
         lists.getSingle(tasksCtrl.uid, tasksCtrl.listID, function(list) {
-          tasksCtrl.loading = false;
+          $rootScope.loading = false;
           if (list === null) {
             $location.url('/lists');
           }

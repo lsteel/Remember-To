@@ -5,6 +5,7 @@ angular
     'appLists',
   ])
   .controller('ListsController', [
+    '$rootScope',
     'authFuncs',
     'users',
     'lists',
@@ -13,9 +14,9 @@ angular
     '$firebaseAuth',
     '$firebaseObject',
     '$filter',
-    function (authFuncs, users, lists, $timeout, $location, $firebaseAuth, $firebaseObject, $filter) {
+    function ($rootScope, authFuncs, users, lists, $timeout, $location, $firebaseAuth, $firebaseObject, $filter) {
       var listsCtrl = this;
-      listsCtrl.loading = true;
+      $rootScope.loading = true;
 
       listsCtrl.userLists = [];
 
@@ -35,6 +36,7 @@ angular
       listsCtrl.dragControlListeners = {
         longTouch: true,
         dragEnd: function() {
+          $rootScope.loading = true;
           i = 0;
           listsCtrl.userLists.forEach(function(item, index, array) {
             item.sortOrder = index + 1;
@@ -49,6 +51,7 @@ angular
             fireList.$save().then(function(fireList) {
               i++;
               if (i === array.length) {
+                $rootScope.loading = false;
               }
             });
           });
@@ -70,7 +73,6 @@ angular
       }
 
       getLists(function() {
-        listsCtrl.loading = false;
         listsCtrl.userLists.forEach(function(item, index, array) {
           lists.watchList(item.lid, function(changed) {
             if (changed) {
@@ -82,10 +84,10 @@ angular
 
       lists.watchSettings(listsCtrl.uid, function(changed) {
         if (changed) {
-          listsCtrl.loading = true;
+          $rootScope.loading = true;
           getLists(function() {
             console.log('lists settings updated.');
-            listsCtrl.loading = false;
+            $rootScope.loading = false;
           });
         }
       });

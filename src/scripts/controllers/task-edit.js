@@ -5,14 +5,16 @@ angular
     'appTasks',
   ])
   .controller('TaskEditController', [
+    '$rootScope',
     'authFuncs',
     'users',
     'tasks',
     '$filter',
     '$location',
     '$routeParams',
-    function (authFuncs, users, tasks, $filter, $location, $routeParams) {
+    function ($rootScope, authFuncs, users, tasks, $filter, $location, $routeParams) {
       var taskEditCtrl = this;
+      $rootScope.loading = true;
 
       taskEditCtrl.minDate = $filter("date")(Date.now(), 'yyyy-MM-dd');
 
@@ -71,13 +73,13 @@ angular
                 $location.url('/list/' + taskEditCtrl.listID);
               }
               else {
-                console.log(task);
                 taskEditCtrl.task = task;
                 taskEditCtrl.inputs.name = taskEditCtrl.task.name;
                 taskEditCtrl.inputs.repeat = taskEditCtrl.task.repeat;
                 taskEditCtrl.inputs.notes = taskEditCtrl.task.notes;
                 taskEditCtrl.inputs.tags = taskEditCtrl.task.tags;
                 taskEditCtrl.inputs.sortOrder = taskEditCtrl.task.sortOrder;
+                $rootScope.loading = false;
               }
             });
           }
