@@ -1,9 +1,9 @@
 <div class="row login-ctrl no-margin" ng-style="{height: mainCtrl.minHeight + 'px'}">
   <div class="col-xs-12 no-padding">
     <h1 class="login-title">remember to</h1>
-    <form class="login-form col-xs-10 col-xs-offset-1 no-padding" name="loginForm" ng-submit="loginCtrl.submit(loginCtrl.inputs.email, loginCtrl.inputs.password)" novalidate>
-        <input class="form-control email-input" placeholder="email" name="email" type="text" ng-model="loginCtrl.inputs.email" required />
-        <input class="form-control password-input" placeholder="password" name="password" type="password" ng-model="loginCtrl.inputs.password" required />
+    <form class="login-form col-xs-10 col-xs-offset-1 no-padding" name="loginForm" ng-submit="loginCtrl.submit(loginCtrl.inputs.email, loginCtrl.inputs.password)">
+        <input class="form-control email-input" placeholder="email" name="email" type="text" ng-model="loginCtrl.inputs.email" />
+        <input class="form-control password-input" placeholder="password" name="password" type="password" ng-model="loginCtrl.inputs.password" />
 
         <button type="submit" ng-click="loginCtrl.inputType = 'signin'" class="signin-btn btn btn-default col-xs-12">sign in</button>
         <button type="submit" ng-click="loginCtrl.inputType = 'signup'" class="btn btn-link">sign up</button>
