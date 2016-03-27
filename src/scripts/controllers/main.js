@@ -3,9 +3,12 @@ angular
     'appUsers',
   ])
   .controller('MainController', [
+    '$window',
     '$location',
     'users',
-    function ($location, users) {
+    function ($window, $location, users) {
       var mainCtrl = this;
+
+      mainCtrl.minHeight = $window.innerHeight;
     },
   ]);
