@@ -2,6 +2,7 @@ angular
   .module('RemToApp', [
     'ngRoute',
     'ngAnimate',
+    'angular-md5',
     'as.sortable',
     'LoginController',
     'ListsController',

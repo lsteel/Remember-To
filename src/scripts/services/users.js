@@ -18,13 +18,9 @@ angular
             ref = new Firebase(userURL),
             fireUser = $firebaseObject(ref);
 
-        fireUser.email = userCred.email;
-        fireUser.name = "";
-        fireUser.createdOn = Date.now();
+        fireUser.userExists = true;
         fireUser.$save().then(function() {
-          console.log('User set.');
-          //send to initialize user settings
-          userSettings.create(fireUser.$id);
+          userSettings.create(fireUser.$id, userCred);
         }, function(error) {
           console.log("Error:", error);
         });

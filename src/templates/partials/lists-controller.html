@@ -4,16 +4,16 @@
       <div class="profile-pic-wrapper">
         <div class="profile-pic-container">
           <a href="#">
-            <img src="images/remember-to-avatar.jpg" alt="Profile Pic" />
+            <img src="images/remember-to-avatar.jpg" ng-src="{{listsCtrl.gravatarURL}}" alt="Profile Pic" />
           </a>
         </div>
       </div>
-      <div class="header-menu-wrapper">
-        <span class="glyphicon glyphicon-calendar"></span>
-        <span class="glyphicon glyphicon-bell"></span>
+      <div class="header-menu-wrapper hidden">
+        <span class="flaticon-time-1"></span>
+        <span class="flaticon-music"></span>
         <span class="glyphicon glyphicon-search"></span>
       </div>
-      <button ng-click="listsCtrl.signout()" class="btn btn-xs btn-danger">
+      <button ng-click="listsCtrl.signout()" class="btn btn-xs btn-danger hidden">
         sign out
       </button>
     </header>

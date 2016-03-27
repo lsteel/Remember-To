@@ -1,20 +1,23 @@
 angular
   .module('ListsController', [
     'appAuth',
+    'appSettings',
     'appUsers',
     'appLists',
   ])
   .controller('ListsController', [
     '$rootScope',
+    'md5',
     'authFuncs',
     'users',
+    'userSettings',
     'lists',
     '$timeout',
     '$location',
     '$firebaseAuth',
     '$firebaseObject',
     '$filter',
-    function ($rootScope, authFuncs, users, lists, $timeout, $location, $firebaseAuth, $firebaseObject, $filter) {
+    function ($rootScope, md5, authFuncs, users, userSettings, lists, $timeout, $location, $firebaseAuth, $firebaseObject, $filter) {
       var listsCtrl = this;
       $rootScope.loading = true;
 
@@ -80,6 +83,13 @@ angular
             }
           });
         });
+      });
+
+      userSettings.get(listsCtrl.uid, function(settingsObj) {
+        listsCtrl.settings = settingsObj;
+        //http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200
+        listsCtrl.gravatarURL = 'http://www.gravatar.com/avatar/' + md5.createHash(listsCtrl.settings.email.trim() || '') + '?s=80.jpg';
+        console.log(listsCtrl.settings);
       });
 
       lists.watchSettings(listsCtrl.uid, function(changed) {

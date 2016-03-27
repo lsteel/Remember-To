@@ -3,10 +3,11 @@ angular
     'appAuth',
   ])
   .controller('LoginController', [
+    '$rootScope',
     'authFuncs',
     '$location',
     '$firebaseAuth',
-    function (authFuncs, $location, $firebaseAuth) {
+    function ($rootScope, authFuncs, $location, $firebaseAuth) {
       var loginCtrl = this;
       $rootScope.loading = false;
 
