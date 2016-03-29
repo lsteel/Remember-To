@@ -4,12 +4,20 @@
       "createdOn": 1457029645190,
       "name": "John Doe",
       "email": "asdf@gmail.com",
+      "settings": {
+        "49936e1c-3de9-4752-9a4d-a4833cc30774": {
+          "star-to-top": true,
+          "add-task-to-top": false,
+          "list-badge": "today/all",
+          "use-location": false
+        }
+      },
       "lists": [
         {
           "lid": "-KBxj-CDo-oajTK2wR9W",
-          "do-not-disturb": false,
+          "doNotDisturb": false,
           "color": "purple",
-          "icon": "http://www...../images/home-icon.png",
+          "icon": "home",
           "lat-longs": [
             "40.389892, -111.919277",
             "40.389798, -111.920260",
@@ -27,14 +35,6 @@
       ]
     }
   },
-  "settings": {
-    "49936e1c-3de9-4752-9a4d-a4833cc30774": {
-      "star-to-top": false,
-      "add-task-to-top": false,
-      "list-badge": "today/all",
-      "ask-location": true
-    }
-  },
   "lists": {
     "-KBxj-CDo-oajTK2wR9W": {
       "list-name": "at home",
@@ -46,7 +46,24 @@
       "owners": [
         "49936e1c-3de9-4752-9a4d-a4833cc30774",
         "49936e1c-3de9-4752-9a4d-a4833cc30775"
-      ]
+      ],
+      "tasks": {
+        "-asdf-CDo-oajTK2wR9W": {
+          "name": "take out trash",
+          "completed": false,
+          "star": false,
+          "repeat": "wed",
+          "due": "1000 or 1457029645190 - military time or timestamp",
+          "reminder": "number of milli-seconds before due time",
+          "notes": "This is a note!",
+          "tags": [
+            "#angular",
+            "#fun"
+          ],
+          "completed-on": null,
+          "completed-by": null
+        }
+      }
     }
   }
 }

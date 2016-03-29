@@ -1,0 +1,20 @@
+<div class="row list-create-ctrl no-margin window-size">
+  <div class="col-xs-12">
+    <header class="col-xs-12">
+      <div class="back-button">
+        <a href="#/lists" ng-href="{{ '#/' + (listCreateCtrl.listID ? 'list/' + listCreateCtrl.listID : 'lists') }}">^</a>
+      </div>
+    </header>
+    <div class="form-container col-xs-12">
+      <form name="myForm" ng-submit="listCreateCtrl.submit(listCreateCtrl.inputs)" validate>
+        <input type="text" id="name" name="name" placeholder="list name" ng-model="listCreateCtrl.inputs.name" maxlength="50" required>
+        <input type="checkbox" ng-model="listCreateCtrl.inputs.doNotDisturb" name="do-not-disturb" ng-true-value="true" ng-false-value="false">
+        do not disturb
+        <input type="text" id="location" name="location" placeholder="lat, long" ng-model="listCreateCtrl.inputs.location" maxlength="250">
+        <select ng-model="listCreateCtrl.inputs.color" ng-options="v for v in listCreateCtrl.selectOpts.values">
+  </select>
+        <button ng-disabled="myForm.$invalid" type="submit" name="submit" class="btn btn-info">send</button>
+      </form>
+    </div>
+  </div>
+</div>

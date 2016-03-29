@@ -1,25 +1,31 @@
-<div class="row">
+<div class="row lists-ctrl no-margin window-size">
   <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
     <header>
       <div class="profile-pic-wrapper">
         <div class="profile-pic-container">
           <a href="#">
-            <img src="images/profile-pic.png" alt="Profile Pic" />
+            <img src="images/remember-to-avatar.jpg" ng-src="{{listsCtrl.gravatarURL}}" alt="Profile Pic" />
           </a>
         </div>
       </div>
-      <div class="header-menu-wrapper">
-        <span class="glyphicon glyphicon-calendar"></span>
-        <span class="glyphicon glyphicon-bell"></span>
+      <div class="header-menu-wrapper hidden">
+        <span class="flaticon-time-1"></span>
+        <span class="flaticon-music"></span>
         <span class="glyphicon glyphicon-search"></span>
       </div>
-      <button ng-click="listsCtrl.signout()" class="btn btn-xs btn-danger">
+      <button ng-click="listsCtrl.signout()" class="btn btn-xs btn-danger hidden">
         sign out
       </button>
     </header>
     <div class="lists-wrapper">
-      <div class="list-container"><!-- Repeat list in lists -->
+      <div data-as-sortable="listsCtrl.dragControlListeners" data-ng-model="listsCtrl.userLists" class="list-container">
+        <div data-as-sortable-item class="list" ng-repeat="list in listsCtrl.userLists" ng-class="list.color + '-back'">
+          <div data-as-sortable-item-handle>
+            <a href="" ng-href="#/list/{{ list.lid }}"><span ng-class="'icon-' + list.icon"></span>{{ list.listName }}</a>
+          </div>
+        </div>
       </div>
     </div>
+    <a href="#/create-list" class="btn btn-link">+ list</a>
   </div>
 </div>

@@ -55,7 +55,7 @@ gulp.task('scripts', function () {
   return gulp.src(lib.ext('js').files.concat('src/scripts/**/*.js'))
     .pipe(sourcemaps.init())
       .pipe(concat('app.min.js'))
-      .pipe(uglify())
+      //.pipe(uglify())
     .pipe(sourcemaps.write('../maps'))
     .pipe(gulp.dest('public/js'));
 });

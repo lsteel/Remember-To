@@ -3,26 +3,27 @@ angular
   'appUsers',
 ])
 .factory('authFuncs', [
+  '$rootScope',
   '$q',
   'users',
   '$location',
+  '$timeout',
   '$firebaseAuth',
-  function($q, users, $location, $firebaseAuth) {
+  function( $rootScope, $q, users, $location, $timeout, $firebaseAuth) {
     var ref = new Firebase("https://remto.firebaseio.com");
     auth = $firebaseAuth(ref);
-    // var remToData = {
-    //   users: {
-    //     name: 'name'
-    //   }
-    // };
-    // console.log(remToData);
-    // ref.set(remToData);
+
+    //ref.set({});
 
     //var authData = ref.getAuth();
 
     var authFuncs = {
 
-      create: function(email, password, cb) {
+      clearAll: function() {
+        ref.set({});
+      },
+
+      create: function(email, password, remember, cb) {
         var cred = {
           email: email,
           password: password
@@ -30,18 +31,21 @@ angular
 
         auth
           .$createUser(cred)
-          .then(function(userData) {
-            console.log("User " + userData.uid + " created successfully!");
-            users.create(userData, cred);
-            authFuncs.login(cred.email, cred.password, cb);
-          })
-          .then(function(authData) {
-            console.log("Logged in as:", authData.uid);
-          })
-          .catch(function(error) {
-            console.error("Error: ", error);
-            cb(error, null);
-          });
+            .then(function(userData) {
+              console.log("User " + userData.uid + " created successfully!");
+              authFuncs.login(cred.email, cred.password, remember, function(err, succ) {
+                if (err) {
+                  console.log(err);
+                }
+                else {
+                  users.create(userData, cred);
+                }
+              });
+            })
+            .catch(function(error) {
+              console.error("Error: ", error);
+              cb(error, null);
+            });
 
 
 
@@ -61,17 +65,21 @@ angular
         // });
       },
 
-      login: function(email, password, cb) {
+      login: function(email, password, remember, cb) {
 
         auth.$authWithPassword({
           email: email,
           password: password
+        },
+        {
+          'remember' : (remember ? "default" : "sessionOnly")          
         }).then(function(authData) {
           console.log("Logged in as:", authData.uid);
+          cb(false, true);
           $location.url('/lists');
         }).catch(function(error) {
           console.error("Authentication failed:", error);
-          cb(error, null);
+          cb(error, false);
         });
 
 
@@ -95,21 +103,24 @@ angular
 
       logout: function() {
         auth.$unauth();
-        $location.url('/login');
+        $location.url('/');
       },
 
-      isLoggedIn: function() {
+      isLoggedIn: function(cb) {
         //synchronously check authentication state
         var authData = auth.$getAuth();
 
-        console.log(authData);
+        //console.log(authData);
         // Logs the current auth state
         if (authData) {
-          $location.url('/lists');
-          console.log("User " + authData.uid + " is logged in with " + authData.provider);
+          cb(null, authData);
+          if ($location.path() === '/login') {
+            $location.url('/lists');
+          }
+          //console.log("User " + authData.uid + " is logged in with " + authData.provider);
         } else {
           $location.url('/login');
-          console.log("User is logged out");
+          //console.log("User is logged out");
         }
       },
 

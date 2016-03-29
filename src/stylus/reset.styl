@@ -4,7 +4,45 @@
   position relative
   height auto
 
+.clear-float
+  clear both
+
 h1, h2, h3, h4, h5, h6, p
   margin 0
   padding 0
   line-height 1
+
+input, textarea, select
+  -webkit-appearance none
+  -moz-appearance none
+  appearance none
+
+.form-control
+  height auto
+
+.btn-link {
+  font-weight: normal;
+  color: #fff;
+  border-radius: 0;
+}
+.btn-link,
+.btn-link:active,
+.btn-link.active,
+.btn-link[disabled],
+fieldset[disabled] .btn-link {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.btn-link,
+.btn-link:hover,
+.btn-link:focus,
+.btn-link:active {
+  border-color: transparent;
+}
+.btn-link:hover,
+.btn-link:focus {
+  color: #fff;
+  text-decoration: underline;
+  background-color: transparent;
+}

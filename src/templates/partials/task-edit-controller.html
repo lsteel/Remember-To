@@ -1,0 +1,37 @@
+<div class="row task-edit-ctrl no-margin window-size">
+  <div class="col-xs-12">
+    <header class="col-xs-12">
+      <div class="back-button">
+        <a href="" ng-href="#/list/{{taskEditCtrl.listID}}">^</a>
+      </div>
+    </header>
+    <div class="form-container col-xs-12">
+      <form name="myForm" ng-submit="taskEditCtrl.submit(taskEditCtrl.inputs)" validate>
+        <input type="text" id="name" name="name" placeholder="task name" ng-model="taskEditCtrl.inputs.name" maxlength="50" required>
+
+        <select ng-model="taskEditCtrl.inputs.repeat" ng-init="taskEditCtrl.inputs.repeat = taskEditCtrl.repeatOpts.values[0]" ng-options="v for v in taskEditCtrl.repeatOpts.values"></select>
+
+        <!-- <input class="date-picker" type="date" name="due-date" ng-if="taskEditCtrl.inputs.repeat === ''" ng-model="taskEditCtrl.inputs.dueDate" placeholder="yyyy-MM-dd" min="2013-01-01" max="2050-12-31" />
+
+        <select ng-model="taskEditCtrl.inputs.dueHour" ng-init="taskEditCtrl.inputs.dueHour = taskEditCtrl.dueHourOpts.values[0]" ng-options="v for v in taskEditCtrl.dueHourOpts.values"></select>
+
+        <select ng-model="taskEditCtrl.inputs.dueAmPm" ng-init="taskEditCtrl.inputs.dueAmPm = taskEditCtrl.dueAmPmOpts.values[0]" ng-options="v for v in taskEditCtrl.dueAmPmOpts.values"></select> -->
+
+        <input type="textarea" name="notes" placeholder="notes:" ng-model="taskEditCtrl.inputs.notes">
+        <input type="text" id="name" name="name" placeholder="+ tags (1, 2, 3, etc.)" ng-list ng-model="taskEditCtrl.inputs.tags" maxlength="50">
+        <div class="col-xs-12">
+          <div class="tag-wrapper" ng-repeat="tag in taskEditCtrl.inputs.tags track by $index">
+            <span class="tag">{{ tag }}</span>
+          </div>
+          <div class="tag-wrapper">
+            <span class="tag btn btn-danger" ng-click="taskEditCtrl.inputs.tags = []">X</span>
+          </div>
+        </div>
+
+        <button ng-disabled="myForm.$invalid" type="submit" name="submit" class="btn btn-info">send</button>
+        <br><br><br><br>
+        <div ng-click="taskEditCtrl.delete()" name="delete" class="delete-btn btn btn-danger">delete</div>
+      </form>
+    </div>
+  </div>
+</div>
