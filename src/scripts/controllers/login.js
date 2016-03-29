@@ -10,7 +10,6 @@ angular
     function ($rootScope, authFuncs, $location, $firebaseAuth) {
       var loginCtrl = this;
       loginCtrl.passwordType = "password";
-      loginCtrl.inputs.remember = false;
       loginCtrl.inputType = 'signin';
 
       (function() {

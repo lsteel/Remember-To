@@ -4,7 +4,7 @@
     <form class="login-form col-xs-12 no-padding" name="loginForm" ng-submit="loginCtrl.submit(loginCtrl.inputs.email, loginCtrl.inputs.password, loginCtrl.inputs.remember)">
       <div class="input-group">
         <input class="form-control email-input" placeholder="email" name="email" type="text" ng-model="loginCtrl.inputs.email" />
-        <span class="input-group-addon email-input"><label><input type="checkbox" ng-model="loginCtrl.inputs.remember">&nbsp;&nbsp;remember me</label></span>
+        <span class="input-group-addon email-input"><input class="checkbox-custom" type="checkbox" ng-model="loginCtrl.inputs.remember" ng-init="loginCtrl.inputs.remember = false"><label class="checkbox-custom-label">remember me</label></span>
       </div>
       <div class="input-group">
         <input class="form-control password-input" placeholder="password" name="password" type="{{loginCtrl.passwordType}}" ng-model="loginCtrl.inputs.password" />
