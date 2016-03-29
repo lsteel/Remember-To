@@ -9,18 +9,21 @@ angular
     '$firebaseAuth',
     function ($rootScope, authFuncs, $location, $firebaseAuth) {
       var loginCtrl = this;
-      $rootScope.loading = false;
-
-      (function() {
-        authFuncs.isLoggedIn(function(err, data) {});
-      })();
-
+      loginCtrl.passwordType = "password";
+      loginCtrl.inputs.remember = false;
       loginCtrl.inputType = 'signin';
 
-      loginCtrl.submit = function(email, password) {
-        loginCtrl.errorMessage = null;
+      (function() {
+        authFuncs.isLoggedIn(function(err, data) {
+          $rootScope.loading = false;
+        });
+      })();
 
-        loginCtrl[loginCtrl.inputType](email, password, function(err, userData) {
+      loginCtrl.submit = function(email, password, remember) {
+        loginCtrl.errorMessage = null;
+        console.log(remember);
+
+        loginCtrl[loginCtrl.inputType](email, password, remember, function(err, userData) {
           var emailError = 'Firebase.authWithPassword failed: First argument must contain the key "email" with type "string"';
           var passError = 'Firebase.authWithPassword failed: First argument must contain the key "password" with type "string"';
           var wrongPass = 'The specified password is incorrect.';
@@ -52,15 +55,24 @@ angular
         });
       };
 
-      loginCtrl.signin = function(email, password, cb) {
-        return authFuncs.login(email, password, cb);
+      loginCtrl.signin = function(email, password, remember, cb) {
+        return authFuncs.login(email, password, remember, cb);
       };
 
-      loginCtrl.signup = function(email, password, cb) {
+      loginCtrl.signup = function(email, password, remember, cb) {
         return authFuncs.create(email, password, cb);
       };
       loginCtrl.forgot = function(email, password, cb) {
         return authFuncs.resetPass(email, cb);
+      };
+
+      loginCtrl.switchInputType = function() {
+        if (loginCtrl.passwordType === "password") {
+          loginCtrl.passwordType = "text";
+        }
+        else {
+          loginCtrl.passwordType = "password";
+        }
       };
     },
   ]);

@@ -23,7 +23,7 @@ angular
         ref.set({});
       },
 
-      create: function(email, password, cb) {
+      create: function(email, password, remember, cb) {
         var cred = {
           email: email,
           password: password
@@ -33,7 +33,7 @@ angular
           .$createUser(cred)
             .then(function(userData) {
               console.log("User " + userData.uid + " created successfully!");
-              authFuncs.login(cred.email, cred.password, function(err, succ) {
+              authFuncs.login(cred.email, cred.password, remember, function(err, succ) {
                 if (err) {
                   console.log(err);
                 }
@@ -65,11 +65,14 @@ angular
         // });
       },
 
-      login: function(email, password, cb) {
+      login: function(email, password, remember, cb) {
 
         auth.$authWithPassword({
           email: email,
           password: password
+        },
+        {
+          'remember' : (remember ? "default" : "sessionOnly")          
         }).then(function(authData) {
           console.log("Logged in as:", authData.uid);
           cb(false, true);

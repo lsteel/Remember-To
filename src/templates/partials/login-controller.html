@@ -1,9 +1,16 @@
 <div class="row login-ctrl no-margin window-size">
   <div class="no-padding col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
     <h1 class="login-title">remember to</h1>
-    <form class="login-form col-xs-12 no-padding" name="loginForm" ng-submit="loginCtrl.submit(loginCtrl.inputs.email, loginCtrl.inputs.password)">
+    <form class="login-form col-xs-12 no-padding" name="loginForm" ng-submit="loginCtrl.submit(loginCtrl.inputs.email, loginCtrl.inputs.password, loginCtrl.inputs.remember)">
+      <div class="input-group">
         <input class="form-control email-input" placeholder="email" name="email" type="text" ng-model="loginCtrl.inputs.email" />
-        <input class="form-control password-input" placeholder="password" name="password" type="password" ng-model="loginCtrl.inputs.password" />
+        <span class="input-group-addon email-input"><label><input type="checkbox" ng-model="loginCtrl.inputs.remember">&nbsp;&nbsp;remember me</label></span>
+      </div>
+      <div class="input-group">
+        <input class="form-control password-input" placeholder="password" name="password" type="{{loginCtrl.passwordType}}" ng-model="loginCtrl.inputs.password" />
+        <span class="input-group-addon password-input"><a href="" ng-click="loginCtrl.switchInputType()"><span class="glyphicon" ng-class="{'glyphicon-eye-close': loginCtrl.passwordType === 'password', 'glyphicon-eye-open': loginCtrl.passwordType === 'text'}"></span></a></span>
+      </div>
+
 
         <button type="submit" ng-click="loginCtrl.inputType = 'signin'" class="signin-btn btn btn-default col-xs-12">sign in</button>
         <button type="submit" ng-click="loginCtrl.inputType = 'signup'" class="btn btn-link">sign up</button>
