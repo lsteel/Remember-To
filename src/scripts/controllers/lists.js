@@ -71,6 +71,7 @@ angular
         lists.getAll(listsCtrl.uid, function(fireLists) {
           listsCtrl.userLists = fireLists;
           listsCtrl.userLists = $filter('orderBy')(listsCtrl.userLists, 'sortOrder');
+          console.log(listsCtrl.userLists);
           cb();
         });
       }

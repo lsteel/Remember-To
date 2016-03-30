@@ -1,5 +1,5 @@
 <div class="row lists-ctrl no-margin window-size">
-  <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
+  <div class="no-padding col-xs-12">
     <header>
       <div class="profile-pic-wrapper">
         <div class="profile-pic-container">
@@ -19,9 +19,9 @@
     </header>
     <div class="lists-wrapper">
       <div data-as-sortable="listsCtrl.dragControlListeners" data-ng-model="listsCtrl.userLists" class="list-container">
-        <div data-as-sortable-item class="list" ng-repeat="list in listsCtrl.userLists" ng-class="list.color + '-back'">
-          <div data-as-sortable-item-handle>
-            <a href="" ng-href="#/list/{{ list.lid }}"><span ng-class="'icon-' + list.icon"></span>{{ list.listName }}</a>
+        <div class="list-item" data-as-sortable-item class="list" ng-repeat="list in listsCtrl.userLists" ng-class="list.color + '-back'">
+          <div class="list-handle" data-as-sortable-item-handle>
+            <a href="" ng-href="#/list/{{ list.lid }}" class="list-link"><span class="list-icon" ng-class="'flaticon-' + list.icon"></span>{{ list.listName }}</a>
           </div>
         </div>
       </div>

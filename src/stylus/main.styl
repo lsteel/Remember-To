@@ -11,12 +11,18 @@ $clear-white = rgba(255,255,255,.75)
 $dark-grey = #333333
 $lgt-grey = #444444
 $lgt-lgt-grey = #b7b7b7
-$red = #FF4232
-$orange = #FF5800
-$yellow = #FF9B00
-$green = #00C47D
-$blue = #0088C6
-$violet = #CB00C0
+$red = #CA302A
+$clear-red = rgba(202,48,42,.6)
+$orange = #E18B00
+$clear-orange = rgba(225,139,0,.6)
+$yellow = #EEB300
+$clear-yellow = rgba(238,179,0,.6)
+$green = #5FB3AB
+$clear-green = rgba(95,179,171,.6)
+$blue = #357B96
+$clear-blue = rgba(53,123,150,.6)
+$violet = #6D1764
+$clear-violet = rgba(109,23,100,.6)
 
 //Futura-Heavy          700
 //Futura-Book           400
@@ -68,39 +74,27 @@ img
 
 .red-back
   color $white
-  background-color $red
-  &:before
-    background-color $red
+  background-color $clear-red
 
 .orange-back
   color $white
-  background-color $orange
-  &:before
-    background-color $orange
+  background-color $clear-orange
 
 .yellow-back
   color $white
-  background-color $yellow
-  &:before
-    background-color $yellow
+  background-color $clear-yellow
 
 .green-back
   color $white
-  background-color $green
-  &:before
-    background-color $green
+  background-color $clear-green
 
 .blue-back
   color $white
-  background-color $blue
-  &:before
-    background-color $blue
+  background-color $clear-blue
 
 .violet-back
   color $white
-  background-color $violet
-  &:before
-    background-color $violet
+  background-color $clear-violet
 
 .italic
   font-style italic
@@ -121,6 +115,7 @@ html
   background-image url('../images/misty-mountains.jpg')
   background-position center
   background-size cover
+  background-attachment fixed
 
 html, body
   margin 0 auto
@@ -327,7 +322,8 @@ body
 //LISTS SCREEN
 
 header
-  padding 10px 0
+  padding 15px
+  background $clear-blue
 
 .profile-pic-container
   width 80px
@@ -336,6 +332,32 @@ header
   border-radius 100%
   overflow hidden
 
+.list-item
+  -webkit-touch-callout none /* iOS Safari */
+  -webkit-user-select none   /* Chrome/Safari/Opera */
+  -khtml-user-select none    /* Konqueror */
+  -moz-user-select none      /* Firefox */
+  -ms-user-select none       /* IE/Edge */
+  user-select none           /* non-prefixed version, currently not supported by any browser */
+  *
+    vertical-align -5px
+
+.list-icon
+  display inline-block
+  margin 0 5px
+  width 50px
+  text-align center
+  &:before
+    margin 0
+
+.list-link
+  display block
+  padding 5px 0
+  width 100%
+  height auto
+
+
+//LISTS CREATE/EDIT SCREEN
 
 input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-button
   display none

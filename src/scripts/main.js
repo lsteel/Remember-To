@@ -56,6 +56,10 @@ $(window).resize(function() {
 	showResolution();
 });
 
+setInterval(function() {
+	everySize();
+}, 1000);
+
 function showResolution() {
 	$('.screen-resolution p').text(winWidth + ' x ' + winHeight);
 }

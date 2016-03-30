@@ -44,8 +44,8 @@ gulp.task('watch', [
   'stylus.watch',
   'static.watch',
   'templates.watch',
-  'server',
-  'livereload'
+  'server'//,
+  //'livereload'
 ], function() {
   console.log('You dun bin gulped!!!1!');
 });

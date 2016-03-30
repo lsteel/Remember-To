@@ -78,7 +78,7 @@ angular
         inputs.doNotDisturb = inputs.doNotDisturb || false;
         inputs.location = inputs.location || null;
         inputs.color = inputs.color || listCreateCtrl.randomColor();
-        inputs.icon = inputs.icon || "home";
+        inputs.icon = inputs.icon || "interface";
 
         if (listCreateCtrl.listID !== undefined) {
           return lists.update(listCreateCtrl.listID, inputs, function() {

@@ -48,7 +48,7 @@ angular
             messageAlert = "I can't find an account with that email address. Is it spelled correctly?";
           }
           else {
-            messageAlert = "Well, this is awkward. I'm not really sure what went wrong.";
+            //messageAlert = "Well, this is awkward. I'm not really sure what went wrong.";
           }
           loginCtrl.errorMessage = messageAlert;
         });
