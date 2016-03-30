@@ -9,11 +9,18 @@ angular
     'users',
     function ($rootScope, $window, $location, users) {
       var mainCtrl = this;
-
       $rootScope.rsLoading = true;
+      $rootScope.path = $location.path();
+
+      var domain = $window.location.pathname;
 
       $rootScope.$on("$locationChangeStart", function (event, next, current) {
-        $rootScope.path = $location.path();
+        $('html, body').animate({
+          scrollTop: $('body').offset().top
+        }, 175);
+        $rootScope.path = next.replace(/^.*\/\/[^\/]+/, '');
+        $rootScope.prevPath = current.replace(/^.*\/\/[^\/]+/, '');
+        console.log($rootScope.prevPath + ', ' + $rootScope.path);
         $rootScope.rsLoading = true;
       });
     },

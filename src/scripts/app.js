@@ -16,7 +16,9 @@ angular
   ])
   .config([
     '$routeProvider',
-    function ($routeProvider) { 'use strict';
+    '$locationProvider',
+    function ($routeProvider, $locationProvider) {
+      'use strict';
       $routeProvider
         .when('/login', {
           templateUrl: '/partials/login-controller.html',

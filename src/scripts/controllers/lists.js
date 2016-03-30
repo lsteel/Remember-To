@@ -71,7 +71,7 @@ angular
         lists.getAll(listsCtrl.uid, function(fireLists) {
           listsCtrl.userLists = fireLists;
           listsCtrl.userLists = $filter('orderBy')(listsCtrl.userLists, 'sortOrder');
-          console.log(listsCtrl.userLists);
+          //console.log(listsCtrl.userLists);
           cb();
         });
       }
@@ -81,7 +81,7 @@ angular
           lists.watchList(item.lid, function(changed) {
             if (changed) {
               getLists(function() {
-                console.log('lists changed and updated.');
+                //console.log('lists changed and updated.');
                 $rootScope.rsLoading = false;
               });
             }
@@ -93,13 +93,13 @@ angular
         listsCtrl.settings = settingsObj;
         //http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200
         listsCtrl.gravatarURL = 'http://www.gravatar.com/avatar/' + md5.createHash(listsCtrl.settings.email.trim() || '') + '.jpg';
-        console.log(listsCtrl.settings);
+        //console.log(listsCtrl.settings);
       });
 
       lists.watchSettings(listsCtrl.uid, function(changed) {
         if (changed) {
           getLists(function() {
-            console.log('lists settings updated.');
+            //console.log('lists settings updated.');
           });
         }
       });
