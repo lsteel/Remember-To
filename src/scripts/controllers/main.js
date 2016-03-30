@@ -10,10 +10,11 @@ angular
     function ($rootScope, $window, $location, users) {
       var mainCtrl = this;
 
-      $rootScope.loading = true;
+      $rootScope.rsLoading = true;
 
-      $rootScope.$on('$routeChangeStart', function () {
-        $rootScope.loading = true;
+      $rootScope.$on("$locationChangeStart", function (event, next, current) {
+        $rootScope.path = $location.path();
+        $rootScope.rsLoading = true;
       });
     },
   ]);

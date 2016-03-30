@@ -18,15 +18,16 @@ angular
     '$firebaseObject',
     '$filter',
     function ($rootScope, md5, authFuncs, users, userSettings, lists, $timeout, $location, $firebaseAuth, $firebaseObject, $filter) {
+      $rootScope.rsLoading = true;
       var listsCtrl = this;
-      $rootScope.loading = true;
-
+      listsCtrl.show = false;
       listsCtrl.userLists = [];
 
       (function() {
         authFuncs.isLoggedIn(function(err, data) {
           if (data) {
             listsCtrl.uid = data.uid;
+            listsCtrl.show = true;
           }
           else if (err) {
             console.log(err);
@@ -39,7 +40,6 @@ angular
       listsCtrl.dragControlListeners = {
         longTouch: true,
         dragEnd: function() {
-          $rootScope.loading = true;
           i = 0;
           listsCtrl.userLists.forEach(function(item, index, array) {
             item.sortOrder = index + 1;
@@ -54,7 +54,6 @@ angular
             fireList.$save().then(function(fireList) {
               i++;
               if (i === array.length) {
-                $rootScope.loading = false;
               }
             });
           });
@@ -68,6 +67,7 @@ angular
       // });
 
       function getLists(cb) {
+        $rootScope.rsLoading = true;
         lists.getAll(listsCtrl.uid, function(fireLists) {
           listsCtrl.userLists = fireLists;
           listsCtrl.userLists = $filter('orderBy')(listsCtrl.userLists, 'sortOrder');
@@ -80,7 +80,10 @@ angular
         listsCtrl.userLists.forEach(function(item, index, array) {
           lists.watchList(item.lid, function(changed) {
             if (changed) {
-              getLists(function() {console.log('lists changed and updated.');});
+              getLists(function() {
+                console.log('lists changed and updated.');
+                $rootScope.rsLoading = false;
+              });
             }
           });
         });
@@ -95,10 +98,8 @@ angular
 
       lists.watchSettings(listsCtrl.uid, function(changed) {
         if (changed) {
-          $rootScope.loading = true;
           getLists(function() {
             console.log('lists settings updated.');
-            $rootScope.loading = false;
           });
         }
       });

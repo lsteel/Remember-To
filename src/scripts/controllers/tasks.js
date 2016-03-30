@@ -17,8 +17,10 @@ angular
   '$firebaseObject',
   '$routeParams',
   function ($rootScope, authFuncs, users, lists, tasks, $filter, $location, $firebaseAuth, $firebaseObject, $routeParams) {
+    $rootScope.rsLoading = true;
     var tasksCtrl = this;
-    $rootScope.loading = true;
+    tasksCtrl.show = false;
+
 
     tasksCtrl.listID = $routeParams.lid;
 
@@ -26,6 +28,7 @@ angular
       authFuncs.isLoggedIn(function(err, data) {
         if (data) {
           tasksCtrl.uid = data.uid;
+          tasksCtrl.show = true;
         }
         else if (err) {
           console.log(err);
@@ -59,9 +62,10 @@ angular
     tasksCtrl.tasks = [];
 
     lists.watchList(tasksCtrl.listID, function(changed) {
+      $rootScope.rsLoading = true;
       if (changed) {
         lists.getSingle(tasksCtrl.uid, tasksCtrl.listID, function(list) {
-          $rootScope.loading = false;
+
           if (list === null) {
             $location.url('/lists');
           }
@@ -78,6 +82,7 @@ angular
             }
             tasksCtrl.tasks = $filter('orderBy')(tasksCtrl.tasks, ['-star', 'sortOrder']);
             console.log(tasksCtrl.tasks);
+            $rootScope.rsLoading = false;
           }
         });
       }

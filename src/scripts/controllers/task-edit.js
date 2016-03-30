@@ -13,8 +13,10 @@ angular
     '$location',
     '$routeParams',
     function ($rootScope, authFuncs, users, tasks, $filter, $location, $routeParams) {
+      $rootScope.rsLoading = true;
       var taskEditCtrl = this;
-      $rootScope.loading = true;
+      taskEditCtrl.show = false;
+
 
       taskEditCtrl.minDate = $filter("date")(Date.now(), 'yyyy-MM-dd');
 
@@ -32,6 +34,7 @@ angular
           }
           else {
             taskEditCtrl.uid = data.uid;
+            taskEditCtrl.show = true;
           }
         });
       })();
@@ -67,6 +70,7 @@ angular
 
       if (taskEditCtrl.taskID !== undefined) {
         tasks.watchTask(taskEditCtrl.listID, taskEditCtrl.taskID, function(changed) {
+          $rootScope.rsLoading = true;
           if (changed) {
             tasks.getSingle(taskEditCtrl.listID, taskEditCtrl.taskID, function(task) {
               if (task === null) {
@@ -79,7 +83,7 @@ angular
                 taskEditCtrl.inputs.notes = taskEditCtrl.task.notes;
                 taskEditCtrl.inputs.tags = taskEditCtrl.task.tags;
                 taskEditCtrl.inputs.sortOrder = taskEditCtrl.task.sortOrder;
-                $rootScope.loading = false;
+                $rootScope.rsLoading = false;
               }
             });
           }

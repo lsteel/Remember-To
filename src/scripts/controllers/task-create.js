@@ -12,22 +12,25 @@ angular
     '$location',
     '$routeParams',
     function ($rootScope, authFuncs, users, tasks, $location, $routeParams) {
+      $rootScope.rsLoading = false;
       var taskCreateCtrl = this;
-      $rootScope.loading = false;
+      taskCreateCtrl.show = false;
+
       //
       // taskCreateCtrl.listID = $routeParams.lid;
       // taskCreateCtrl.taskID = $routeParams.tid;
       //
-      // (function() {
-      //   authFuncs.isLoggedIn(function(err, data) {
-      //     if (err) {
-      //       console.log(err);
-      //     }
-      //     else {
-      //       taskCreateCtrl.uid = data.uid;
-      //     }
-      //   });
-      // })();
+      (function() {
+        authFuncs.isLoggedIn(function(err, data) {
+          if (err) {
+            console.log(err);
+          }
+          else {
+            taskCreateCtrl.uid = data.uid;
+            taskCreateCtrl.show = true;
+          }
+        });
+      })();
       //
       //
       // taskCreateCtrl.selectOpts = {

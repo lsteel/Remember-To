@@ -72,7 +72,7 @@ angular
           password: password
         },
         {
-          'remember' : (remember ? "default" : "sessionOnly")          
+          'remember' : (remember ? "default" : "sessionOnly")
         }).then(function(authData) {
           console.log("Logged in as:", authData.uid);
           cb(false, true);
@@ -119,6 +119,7 @@ angular
           }
           //console.log("User " + authData.uid + " is logged in with " + authData.provider);
         } else {
+          cb(null, null);
           $location.url('/login');
           //console.log("User is logged out");
         }

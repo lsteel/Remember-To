@@ -12,8 +12,10 @@ angular
     '$location',
     '$routeParams',
     function ($rootScope, authFuncs, users, lists, $location, $routeParams) {
+      $rootScope.rsLoading = false;
       var listCreateCtrl = this;
-      $rootScope.loading = true;
+      listCreateCtrl.show = false;
+
 
       listCreateCtrl.listID = $routeParams.lid;
 
@@ -24,6 +26,7 @@ angular
           }
           else {
             listCreateCtrl.uid = data.uid;
+            listCreateCtrl.show = true;
           }
         });
       })();
@@ -47,7 +50,9 @@ angular
       };
 
       if (listCreateCtrl.listID !== undefined) {
+        $rootScope.rsLoading = true;
         lists.watchList(listCreateCtrl.listID, function(changed) {
+          $rootScope.rsLoading = true;
           if (changed) {
             lists.getSingle(listCreateCtrl.uid, listCreateCtrl.listID, function(list) {
               if (list === null) {
@@ -63,14 +68,14 @@ angular
                 listCreateCtrl.inputs.icon = listCreateCtrl.list.icon;
                 listCreateCtrl.inputs.users = listCreateCtrl.list.users;
                 listCreateCtrl.inputs.lsid = listCreateCtrl.list.userSettingsID;
-                $rootScope.loading = false;
+                $rootScope.rsLoading = false;
               }
             });
           }
         });
       }
       else {
-        $rootScope.loading = false;
+        $rootScope.rsLoading = false;
       }
 
       listCreateCtrl.submit = function(inputs) {

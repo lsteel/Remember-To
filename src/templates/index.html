@@ -18,9 +18,9 @@
   </head>
   <body ng-controller="MainController as mainCtrl">
     <div class="container-fluid">
-      <div class="col-xs-12 no-padding" ng-view></div>
+      <div class="col-xs-12 no-padding" ng-view ng-class="{slide: path !== '/login'}"></div>
     </div>
-    <div class="loading" ng-if="$rootScope.div"><img src="images/remember-to-loading.gif" /></div>
+    <div class="loading" ng-if="rsLoading"><img src="images/remember-to-loading.gif" /></div>
     <div class="screen-resolution"><p></p></div>
     <script src="js/app.min.js"></script>
   </body>

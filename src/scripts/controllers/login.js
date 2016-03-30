@@ -8,13 +8,16 @@ angular
     '$location',
     '$firebaseAuth',
     function ($rootScope, authFuncs, $location, $firebaseAuth) {
+      $rootScope.rsLoading = true;
       var loginCtrl = this;
+      loginCtrl.show = false;
       loginCtrl.passwordType = "password";
       loginCtrl.inputType = 'signin';
 
       (function() {
         authFuncs.isLoggedIn(function(err, data) {
-          $rootScope.loading = false;
+          loginCtrl.show = true;
+          $rootScope.rsLoading = false;
         });
       })();
 

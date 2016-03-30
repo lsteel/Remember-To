@@ -112,6 +112,7 @@ img
 //end section to remove
 
 html
+  -webkit-font-smoothing: antialiased;
   background-image url('../images/misty-mountains.jpg')
   background-position center
   background-size cover
@@ -140,6 +141,8 @@ body
   opacity 1
   background $clear-white
   z-index 9999
+  *
+    transform translateZ(0)
   &.ng-enter, &.ng-leave
     transition all 0.5s ease
   &.ng-enter, &.ng-leave.ng-leave-active
@@ -164,6 +167,32 @@ body
 
 .no-margin
   margin 0
+
+.slide
+  position absolute
+  left 0
+  top 0
+  width 100%
+  height 100%
+  transform translateZ(0)
+
+.slide.ng-enter,
+.slide.ng-leave
+  transition all 1s ease
+
+.slide.ng-enter
+  left 100%
+
+.slide.ng-enter-active
+  left 0
+
+.slide.ng-leave
+  left 0
+
+.slide.ng-leave-active
+  left -100%
+
+
 
 //LOGIN SCREEN
 
@@ -324,6 +353,7 @@ body
 header
   padding 15px
   background $clear-blue
+  border-bottom 2px solid $white
 
 .profile-pic-container
   width 80px
@@ -340,7 +370,7 @@ header
   -ms-user-select none       /* IE/Edge */
   user-select none           /* non-prefixed version, currently not supported by any browser */
   *
-    vertical-align -5px
+    vertical-align middle
 
 .list-icon
   display inline-block
@@ -355,6 +385,9 @@ header
   padding 5px 0
   width 100%
   height auto
+
+.list-text
+  font-weight 700
 
 
 //LISTS CREATE/EDIT SCREEN
