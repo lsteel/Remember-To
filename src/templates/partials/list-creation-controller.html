@@ -1,21 +1,25 @@
 <div class="row list-create-ctrl no-margin window-size" ng-if="listCreateCtrl.show">
-  <div class="col-xs-12">
-    <header class="col-xs-12">
+  <div class="no-padding col-xs-12">
+    <header class="col-xs-12 lcc-header">
+      <h1><span class="flaticon-interface"></span>&nbsp;&nbsp;create a list</h1>
       <div class="back-button">
-        <a href="#/lists" ng-href="{{ '#/' + (listCreateCtrl.listID ? 'list/' + listCreateCtrl.listID : 'lists') }}">^</a>
+        <a href="#/lists" ng-href="{{ '#/' + (listCreateCtrl.listID ? 'list/' + listCreateCtrl.listID : 'lists') }}"><span class="flaticon-arrows"></span></a>
       </div>
     </header>
-    <div class="form-container col-xs-12">
+    <div class="settings-form form-container col-xs-12">
       <form name="myForm" ng-submit="listCreateCtrl.submit(listCreateCtrl.inputs)" validate>
         <input type="text" id="name" name="name" placeholder="list name" ng-model="listCreateCtrl.inputs.name" maxlength="50" required>
-        <input type="checkbox" ng-model="listCreateCtrl.inputs.doNotDisturb" name="do-not-disturb" ng-true-value="true" ng-false-value="false">
-        do not disturb
+        <input class="checkbox-custom" type="checkbox" ng-model="listCreateCtrl.inputs.doNotDisturb" name="do-not-disturb" ng-true-value="true" ng-false-value="false">
+        <label class="checkbox-custom-label">do not disturb</label>
         <input type="text" id="location" name="location" placeholder="lat, long" ng-model="listCreateCtrl.inputs.location" maxlength="250">
         <select ng-model="listCreateCtrl.inputs.color" ng-options="v for v in listCreateCtrl.selectOpts.values"></select>
 
+        <div class="colors-container no-padding col-xs-12">
+          <span class="color-select" ng-repeat="color in listCreateCtrl.colors" ng-click="listCreateCtrl.selectColor($index); listCreateCtrl.inputs.color = listCreateCtrl.colors[listCreateCtrl.selectedColor]" ng-class="[color + '-back', {sel: $index === listCreateCtrl.selectedColor}]"></span>
+        </div>
 
         <!-- begin icon selection -->
-
+        <div class="icons-container no-padding col-xs-12">
         <a href="" ng-click="listCreateCtrl.inputs.icon = 'arrows'"><span class="flaticon-arrows"></span></a>
         <a href="" ng-click="listCreateCtrl.inputs.icon = 'briefcase'"><span class="flaticon-briefcase"></span></a>
         <a href="" ng-click="listCreateCtrl.inputs.icon = 'business'"><span class="flaticon-business"></span></a>
@@ -89,7 +93,7 @@
         <a href="" ng-click="listCreateCtrl.inputs.icon = 'weapon'"><span class="flaticon-weapon"></span></a>
         <a href="" ng-click="listCreateCtrl.inputs.icon = 'web'"><span class="flaticon-web"></span></a>
         <a href="" ng-click="listCreateCtrl.inputs.icon = 'wrench'"><span class="flaticon-wrench"></span></a>
-
+      </div>
         <!-- end icon selection -->
 
 

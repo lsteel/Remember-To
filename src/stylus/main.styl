@@ -7,7 +7,7 @@
 $black = #000
 $white = #fff
 $off-white = #f1f2f2
-$clear-white = rgba(255,255,255,.75)
+$clear-white = rgba(255,255,255,.3)
 $dark-grey = #333333
 $lgt-grey = #444444
 $lgt-lgt-grey = #b7b7b7
@@ -251,6 +251,7 @@ body
 .checkbox-custom
   opacity 0
   position absolute
+  min-height 20px
   z-index: 9999;
 
 .checkbox-custom, .checkbox-custom-label
@@ -266,7 +267,7 @@ body
 .checkbox-custom + .checkbox-custom-label:before
   content ''
   background #fff
-  border 2px solid #ddd
+  border 2px solid $dark-grey
   display inline-block
   vertical-align middle
   width 20px
@@ -280,8 +281,8 @@ body
   box-shadow inset 0px 0px 0px 2px #fff
 
 
-//.checkbox-custom:focus + .checkbox-custom-label
-  //outline 1px solid #ddd; /* focus style */
+.checkbox-custom:focus + .checkbox-custom-label
+  outline 1px solid $blue; /* focus style */
 
 .password-input
   border none
@@ -406,26 +407,53 @@ header
 .list-text
   font-weight 700
 
+.add-list-btn
+  margin 0 0 100px 20px
+  font-size 100%
+  font-weight 700
+
 
 //LISTS CREATE/EDIT SCREEN
+
+.list-create-ctrl
+  background $clear-white
+
+.lcc-header
+  padding 20px 10px 10px
+  border 0
+  text-align center
+  h1
+    font-size 150%
+    font-weight 700
+    span
+      font-size 50%
+      font-weight 400
+
+.back-button
+  position absolute
+  top 5px
+  left 0
+
+.settings-form
+  input
+    width 100%
+
 
 input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-button
   display none
   -webkit-appearance none
   appearance none
 
-select
-  margin 50px
-  border 1px solid #111
-  background transparent
-  width 150px
-  padding 5px 35px 5px 5px
-  font-size 16px
-  border 1px solid #ccc
-  height 34px
-  -webkit-appearance none
-  -moz-appearance none
-  appearance none
+.colors-container
+  text-align center
+
+.color-select
+  display inline-block
+  width 50px
+  height 50px
+  border 2px solid transparent
+  &.sel
+    border-color $white
 
 
 @media screen and (min-width: 0\0)

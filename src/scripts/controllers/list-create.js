@@ -32,14 +32,18 @@ angular
       })();
 
 
-      listCreateCtrl.selectOpts = {
-        "type": "select",
-        "name": "color",
-        "values": [ "red", "orange", "yellow", "green",  "blue", "violet"]
+      listCreateCtrl.colors = [ "red", "orange", "yellow", "green",  "blue", "violet"];
+
+      listCreateCtrl.selectedColor;
+
+      listCreateCtrl.selectColor = function(index) {
+         listCreateCtrl.selectedColor = index;
       };
 
       listCreateCtrl.randomColor = function() {
-        var color = listCreateCtrl.selectOpts.values[Math.floor(Math.random() * listCreateCtrl.selectOpts.values.length)];
+        var num = Math.floor(Math.random() * listCreateCtrl.colors.length);
+        var color = listCreateCtrl.colors[num];
+        listCreateCtrl.selectedColor = num;
         return color;
       };
 
@@ -63,7 +67,9 @@ angular
                 listCreateCtrl.inputs.name = listCreateCtrl.list.listName;
                 listCreateCtrl.inputs.doNotDisturb = listCreateCtrl.list.doNotDisturb;
                 listCreateCtrl.inputs.location = listCreateCtrl.list.location;
-                listCreateCtrl.inputs.color = listCreateCtrl.list.color;
+                listCreateCtrl.selectedColor = listCreateCtrl.colors.indexOf(listCreateCtrl.list.color);
+                listCreateCtrl.inputs.color = listCreateCtrl.colors[listCreateCtrl.colors.indexOf(listCreateCtrl.list.color)];
+                console.log(listCreateCtrl.inputs.color);
                 listCreateCtrl.inputs.sortOrder = listCreateCtrl.list.sortOrder;
                 listCreateCtrl.inputs.icon = listCreateCtrl.list.icon;
                 listCreateCtrl.inputs.users = listCreateCtrl.list.users;
