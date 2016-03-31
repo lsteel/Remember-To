@@ -69,4 +69,8 @@ function everySize() {
 		'height' : 'auto',
 		'min-height' : $(window).height() + 'px'
 	});
+	$('.background-image').css({
+		'height' : 'auto',
+		'min-height' : $('.container-fluid').height() + 'px'
+	});
 }
