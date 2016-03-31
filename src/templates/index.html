@@ -17,8 +17,11 @@
     <link rel="stylesheet" href="css/app.min.css">
   </head>
   <body ng-controller="MainController as mainCtrl">
+    <div class="background-image">
+      <img src="images/misty-mountains.jpg" />
+    </div>
     <div class="container-fluid">
-      <div class="col-xs-12 no-padding" ng-view ng-class="{slide: path !== '/#/login'}"></div>
+      <div class="view col-xs-12 no-padding" ng-view autoscroll="false" ng-class="{slide: path !== '/#/login'}"></div>
     </div>
     <div class="loading" ng-if="rsLoading"><img src="images/remember-to-loading.gif" /></div>
     <div class="screen-resolution"><p></p></div>

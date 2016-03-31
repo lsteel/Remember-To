@@ -17,7 +17,7 @@ angular
       $rootScope.$on("$locationChangeStart", function (event, next, current) {
         $('html, body').animate({
           scrollTop: $('body').offset().top
-        }, 175);
+        }, 750);
         $rootScope.path = next.replace(/^.*\/\/[^\/]+/, '');
         $rootScope.prevPath = current.replace(/^.*\/\/[^\/]+/, '');
         console.log($rootScope.prevPath + ', ' + $rootScope.path);

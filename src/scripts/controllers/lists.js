@@ -54,6 +54,7 @@ angular
             fireList.$save().then(function(fireList) {
               i++;
               if (i === array.length) {
+                $rootScope.rsLoading = false;
               }
             });
           });
@@ -72,6 +73,7 @@ angular
           listsCtrl.userLists = fireLists;
           listsCtrl.userLists = $filter('orderBy')(listsCtrl.userLists, 'sortOrder');
           //console.log(listsCtrl.userLists);
+          $rootScope.rsLoading = false;
           cb();
         });
       }

@@ -23,37 +23,37 @@ angular
         .when('/login', {
           templateUrl: '/partials/login-controller.html',
           controller: 'LoginController',
-          controllerAs: 'loginCtrl',
+          controllerAs: 'loginCtrl'
         })
         .when('/lists', {
           templateUrl: '/partials/lists-controller.html',
           controller: 'ListsController',
-          controllerAs: 'listsCtrl',
+          controllerAs: 'listsCtrl'
         })
         .when('/create-list', {
           templateUrl: '/partials/list-creation-controller.html',
           controller: 'ListCreateController',
-          controllerAs: 'listCreateCtrl',
+          controllerAs: 'listCreateCtrl'
         })
         .when('/edit-list/:lid', {
           templateUrl: '/partials/list-creation-controller.html',
           controller: 'ListCreateController',
-          controllerAs: 'listCreateCtrl',
+          controllerAs: 'listCreateCtrl'
         })
         .when('/list/:lid', {
           templateUrl: '/partials/tasks-controller.html',
           controller: 'TasksController',
-          controllerAs: 'tasksCtrl',
+          controllerAs: 'tasksCtrl'
         })
         .when('/create-task', {
           templateUrl: '/partials/task-creation-controller.html',
           controller: 'TaskCreateController',
-          controllerAs: 'taskCreateCtrl',
+          controllerAs: 'taskCreateCtrl'
         })
         .when('/list/:lid/edit-task/:tid', {
           templateUrl: '/partials/task-edit-controller.html',
           controller: 'TaskEditController',
-          controllerAs: 'taskEditCtrl',
+          controllerAs: 'taskEditCtrl'
         })
         .otherwise('/login');
     },
