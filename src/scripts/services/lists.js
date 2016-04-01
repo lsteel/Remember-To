@@ -72,6 +72,25 @@ angular
           // });
         },
 
+        delete: function(userID, lid, lsid, cb) {
+          lists.deleteSettings(userID, lid, lsid, function(lid) {
+            var listRef = new Firebase("https://remto.firebaseio.com/lists/" + lid);
+            var fireList = $firebaseObject(listRef);
+            fireList.$remove().then(function() {
+              cb();
+            });
+          });
+        },
+
+        deleteSettings: function(userID, lid, lsid, cb) {
+          var userListsSettingsRef = new Firebase("https://remto.firebaseio.com/users/" + userID + "/lists/" + lsid);
+          var fireUserListsSettings = $firebaseObject(userListsSettingsRef);
+
+          fireUserListsSettings.$remove().then(function() {
+            cb(lid);
+          });
+        },
+
         getSingle: function(userID, lid, cb) {
           lists.getSingleSettings(userID, lid, function(listSettings, lid) {
             var list = {};

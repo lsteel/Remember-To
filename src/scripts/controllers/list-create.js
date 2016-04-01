@@ -106,5 +106,14 @@ angular
           });
         }
       };
+
+      listCreateCtrl.delete = function() {
+        if (listCreateCtrl.listID !== undefined) {
+          return lists.delete(listCreateCtrl.uid, listCreateCtrl.listID, listCreateCtrl.list.userSettingsID, function() {
+            listCreateCtrl.inputs = {};
+            $location.url('/lists');
+          });
+        }
+      };
     },
   ]);

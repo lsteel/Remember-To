@@ -58,19 +58,19 @@ $(window).resize(function() {
 
 setInterval(function() {
 	everySize();
-}, 1000);
+}, 100);
 
 function showResolution() {
 	$('.screen-resolution p').text(winWidth + ' x ' + winHeight);
 }
 
 function everySize() {
-	$('.window-size').css({
-		'height' : 'auto',
-		'min-height' : $(window).height() + 'px'
-	});
+	// $('.window-size').css({
+	// 	'height' : 'auto',
+	// 	'min-height' : $(window).height() + 'px'
+	// });
 	$('.background-image').css({
 		'height' : 'auto',
-		'min-height' : $('.container-fluid').height() + 'px'
+		'min-height' : $('body').height() + 'px'
 	});
 }

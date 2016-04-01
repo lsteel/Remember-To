@@ -4,6 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <link rel="apple-touch-icon" href="images/Icon-60.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/Icon-76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/Icon-120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/Icon-152.png">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Remember To">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon"
       type="image/jpg"
       href="images/favicon.jpg">
@@ -21,7 +29,7 @@
       <div class="background-image">
         <img src="images/misty-mountains.jpg" />
       </div>
-      <div class="view col-xs-12 no-padding" ng-view autoscroll="false" ng-class="{slide: path !== '/#/login'}"></div>
+      <div class="view col-xs-12 no-padding" ng-view autoscroll="false" ng-class="{slide: path !== '/#/login', standalone: standalone}"></div>
     </div>
     <div class="loading" ng-if="rsLoading"><img src="images/remember-to-loading.gif" /></div>
     <div class="screen-resolution"><p></p></div>
