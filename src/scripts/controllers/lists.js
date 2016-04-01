@@ -27,7 +27,6 @@ angular
         authFuncs.isLoggedIn(function(err, data) {
           if (data) {
             listsCtrl.uid = data.uid;
-            listsCtrl.show = true;
           }
           else if (err) {
             console.log(err);
@@ -36,10 +35,18 @@ angular
         });
       })();
 
+      listsCtrl.clickable = true;
+
 
       listsCtrl.dragControlListeners = {
         longTouch: true,
+        dragStart: function() {
+          listsCtrl.clickable = false;
+        },
         dragEnd: function() {
+          $timeout(function() {
+            listsCtrl.clickable = true;
+          }, 500);
           i = 0;
           listsCtrl.userLists.forEach(function(item, index, array) {
             item.sortOrder = index + 1;
@@ -72,7 +79,8 @@ angular
         lists.getAll(listsCtrl.uid, function(fireLists) {
           listsCtrl.userLists = fireLists;
           listsCtrl.userLists = $filter('orderBy')(listsCtrl.userLists, 'sortOrder');
-          //console.log(listsCtrl.userLists);
+          console.log(listsCtrl.userLists);
+          listsCtrl.show = true;
           $rootScope.rsLoading = false;
           cb();
         });
@@ -112,6 +120,16 @@ angular
 
       listsCtrl.clearEverything = function() {
         return authFuncs.clearAll();
+      };
+
+      listsCtrl.getNumTasks = function(obj) {
+        var taskCount = 0;
+        for (var key in obj) {
+          if (key !== "__proto__" && !obj[key].completed) {
+            taskCount++;
+          }
+        }
+        return taskCount;
       };
 
 

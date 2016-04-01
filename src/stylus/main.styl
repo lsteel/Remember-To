@@ -104,12 +104,12 @@ img
   text-decoration line-through
 
 //remove this section before live production
-.screen-resolution
-  display block
-  position fixed
-  bottom 20px
-  right 20px
-  color $white
+// .screen-resolution
+//   display block
+//   position fixed
+//   bottom 20px
+//   right 20px
+//   color $white
 //end section to remove
 
 html
@@ -397,11 +397,13 @@ header
   border-bottom 2px solid $white
 
 .profile-pic-container
-  width 80px
-  height 80px
+  width 50px
+  height 50px
   border 2px solid $white
   border-radius 100%
   overflow hidden
+  img
+    border-radius 100%
 
 .list-item
   -webkit-touch-callout none /* iOS Safari */
@@ -430,6 +432,20 @@ header
 .list-text
   font-weight 700
 
+.tasks-total
+  display inline-block
+  position absolute
+  padding 7px 0
+  top 10px
+  right 20px
+  width 35px
+  height 35px
+  text-align center
+  font-size 16px
+  border-radius 100%
+  background $white
+  opacity .7
+
 .add-list-btn
   margin 0 0 100px 20px
   font-size 100%
@@ -442,7 +458,7 @@ header
   background $less-clear-white
   .submit-btn
     position absolute
-    bottom 5px
+    bottom 0px
     right 20px
     font-size 110%
     font-weight 700
@@ -464,6 +480,7 @@ header
   position absolute
   bottom 5px
   left 0
+  font-size 75%
 
 .settings-form
   color $dark-grey

@@ -21,7 +21,7 @@
       <div data-as-sortable="listsCtrl.dragControlListeners" data-ng-model="listsCtrl.userLists" class="lists-container">
         <div class="list-item" data-as-sortable-item class="list" ng-repeat="list in listsCtrl.userLists" ng-class="list.color + '-back'">
           <div class="list-handle" data-as-sortable-item-handle>
-            <a href="" ng-href="#/list/{{ list.lid }}" class="list-link"><span class="list-icon" ng-class="'flaticon-' + list.icon"></span><span class="list-text">{{ list.listName }}</span></a>
+            <a href="" ng-href="{{listsCtrl.clickable ? '#/list/' + list.lid : ''}}" class="list-link"><span class="list-icon" ng-class="'flaticon-' + list.icon"></span><span class="list-text">{{ list.listName }}</span></a><span class="tasks-total" ng-class="[list.color, {hidden: listsCtrl.getNumTasks(list.tasks) === 0}]"><p>{{listsCtrl.getNumTasks(list.tasks)}}</p></span>
           </div>
         </div>
       </div>

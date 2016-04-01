@@ -5,7 +5,7 @@
       <div class="back-button">
         <a href="#/lists" ng-href="{{ '#/' + (listCreateCtrl.listID ? 'list/' + listCreateCtrl.listID : 'lists') }}"><span class="flaticon-arrows"></span></a>
       </div>
-      <button ng-disabled="myForm.$invalid" ng-click="listCreateCtrl.submit(listCreateCtrl.inputs)" type="submit" name="submit" class="submit-btn btn btn-link">done</button>
+      <button ng-disabled="myForm.$invalid" ng-click="listCreateCtrl.submit(listCreateCtrl.inputs)" type="submit" name="submit" class="submit-btn btn btn-link">✓</button>
     </header>
     <div class="settings-form form-container col-xs-12">
       <form name="myForm" ng-submit="" validate>
