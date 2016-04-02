@@ -49,8 +49,100 @@ angular
 
       var color = listCreateCtrl.randomColor();
 
+      listCreateCtrl.icons = [
+        'arrows',
+        'briefcase',
+        'business',
+        'clock',
+        'commerce',
+        'cross',
+        'crown',
+        'favorite',
+        'favorite-1',
+        'folder',
+        'food',
+        'food-1',
+        'food-2',
+        'food-3',
+        'furniture',
+        'interface',
+        'interface-1',
+        'interface-2',
+        'luxury',
+        'medical',
+        'medical-1',
+        'medieval',
+        'monitor',
+        'moon',
+        'music',
+        'networking',
+        'night',
+        'night-1',
+        'night-2',
+        'notebook',
+        'party',
+        'party-1',
+        'party-2',
+        'party-3',
+        'peace',
+        'people',
+        'people-1',
+        'people-2',
+        'people-3',
+        'present',
+        'present-1',
+        'reading',
+        'restaurant',
+        'restaurant-1',
+        'school',
+        'school-1',
+        'suitcase',
+        'sunglasses',
+        'technology',
+        'technology-1',
+        'technology-10',
+        'technology-11',
+        'technology-12',
+        'technology-13',
+        'technology-14',
+        'technology-15',
+        'technology-16',
+        'technology-2',
+        'technology-3',
+        'technology-4',
+        'technology-5',
+        'technology-6',
+        'technology-7',
+        'technology-8',
+        'technology-9',
+        'time',
+        'time-1',
+        'transport',
+        'transport-1',
+        'vintage',
+        'weapon',
+        'web',
+        'wrench'
+      ];
+
+      listCreateCtrl.selectedIcon;
+
+      listCreateCtrl.selectIcon = function(index) {
+         listCreateCtrl.selectedIcon = index;
+      };
+
+      listCreateCtrl.randomIcon = function() {
+        var num = Math.floor(Math.random() * listCreateCtrl.icons.length);
+        var icon = listCreateCtrl.colors[num];
+        listCreateCtrl.selectedIcon = num;
+        return icon;
+      };
+
+      var icon = listCreateCtrl.randomIcon();
+
       listCreateCtrl.inputs = {
-        "color": color
+        "color": color,
+        "icon": icon
       };
 
       if (listCreateCtrl.listID !== undefined) {

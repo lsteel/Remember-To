@@ -235,21 +235,17 @@ body
   input
     padding 13px 20px
     font-size 100%
-  ::-webkit-input-placeholder
-    color $lgt-lgt-grey
-    font-weight: 700
-
-  :-moz-placeholder
-    color $lgt-lgt-grey
-    font-weight: 700
-
-  ::-moz-placeholder
-    color $lgt-lgt-grey
-    font-weight: 700
-
-  :-ms-input-placeholder
-    color $lgt-lgt-grey
-    font-weight: 700
+  // ::-webkit-input-placeholder
+  //   color $lgt-lgt-grey
+  //
+  // :-moz-placeholder
+  //   color $lgt-lgt-grey
+  //
+  // ::-moz-placeholder
+  //   color $lgt-lgt-grey
+  //
+  // :-ms-input-placeholder
+  //   color $lgt-lgt-grey
 
 
 .form-controller, .email-input, .password-input, .input-group-addon
@@ -458,15 +454,16 @@ header
   background $less-clear-white
   .submit-btn
     position absolute
-    bottom 0px
+    bottom 3px
     right 20px
-    font-size 110%
+    font-size 150%
     font-weight 700
 
 .lcc-header
-  padding 20px 10px 10px
+  padding 15px 10px 20px
   border 0
   text-align center
+  transition background .5s ease
   h1
     font-size 150%
     font-weight 700
@@ -478,7 +475,7 @@ header
 
 .back-button
   position absolute
-  bottom 5px
+  bottom 12px
   left 0
   font-size 75%
 
@@ -524,6 +521,7 @@ input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-but
   height 50px
   border 2px solid transparent
   border-radius 100%
+  transition border-color .5s ease
   &.sel
     border-color $white
 
@@ -531,6 +529,21 @@ input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-but
   text-align center
   span:before
     margin 0 10px
+
+.icon-select
+  display inline-block
+  margin 10px
+  padding-top 5px
+  width 60px
+  height 60px
+  text-align center
+  border 2px solid transparent
+  border-radius 100%
+  transition background .5s ease
+  &.sel
+    border-color $white
+  span:before
+    margin 0
 
 
 @media screen and (min-width: 0\0)
