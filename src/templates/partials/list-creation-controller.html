@@ -10,8 +10,8 @@
     <div class="settings-form form-container col-xs-12">
       <form name="myForm" ng-submit="" validate>
         <input class="list-name" type="text" id="name" name="name" placeholder="list name" ng-model="listCreateCtrl.inputs.name" maxlength="20" required>
-        <input class="checkbox-custom" type="checkbox" ng-model="listCreateCtrl.inputs.doNotDisturb" name="do-not-disturb" ng-true-value="true" ng-false-value="false">
-        <label class="checkbox-custom-label">do not disturb</label>
+        <!-- <input class="checkbox-custom" type="checkbox" ng-model="listCreateCtrl.inputs.doNotDisturb" name="do-not-disturb" ng-true-value="true" ng-false-value="false">
+        <label class="checkbox-custom-label">do not disturb</label> -->
         <!-- <input type="text" id="location" name="location" placeholder="lat, long" ng-model="listCreateCtrl.inputs.location" maxlength="250"> -->
         <div class="colors-container">
           <span class="color-select" ng-repeat="color in listCreateCtrl.colors" ng-click="listCreateCtrl.selectColor($index); listCreateCtrl.inputs.color = listCreateCtrl.colors[listCreateCtrl.selectedColor]" ng-class="[color + '-back', {sel: $index === listCreateCtrl.selectedColor}]"></span>
