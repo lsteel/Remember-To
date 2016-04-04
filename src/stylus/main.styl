@@ -257,7 +257,7 @@ body
 
 .email-input
   text-transform lowercase
-  border none
+  border 0
   border-bottom solid 1px $lgt-lgt-grey
   border-top-left-radius 5px
   border-top-right-radius 5px
@@ -304,7 +304,7 @@ body
   outline 1px solid $blue; /* focus style */
 
 .password-input
-  border none
+  border 0
   border-top solid 1px $lgt-lgt-grey
   border-top-left-radius 0
   border-top-right-radius 0
@@ -622,11 +622,15 @@ input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-but
 .text-input
   margin 20px 0 50px
   padding 2px 5px
-  border none
+  border 0
   border-left 1px solid $white
+  border-radius: 0;
   background transparent
   color $white
   font-size 110%
+  -webkit-appearance none
+  appearance none
+  outline none
   &::-webkit-input-placeholder
     color $white
   &:-moz-placeholder
