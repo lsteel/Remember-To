@@ -160,7 +160,9 @@ angular
                 listCreateCtrl.inputs.color = listCreateCtrl.colors[listCreateCtrl.colors.indexOf(listCreateCtrl.list.color)];
                 console.log(listCreateCtrl.inputs.color);
                 listCreateCtrl.inputs.sortOrder = listCreateCtrl.list.sortOrder;
-                listCreateCtrl.inputs.icon = listCreateCtrl.list.icon;
+                listCreateCtrl.selectedIcon = listCreateCtrl.icons.indexOf(listCreateCtrl.list.icon);
+                listCreateCtrl.inputs.icon = listCreateCtrl.icons[listCreateCtrl.icons.indexOf(listCreateCtrl.list.icon)];
+                console.log(listCreateCtrl.inputs.icon);
                 listCreateCtrl.inputs.users = listCreateCtrl.list.users;
                 listCreateCtrl.inputs.lsid = listCreateCtrl.list.userSettingsID;
                 $rootScope.rsLoading = false;
@@ -178,7 +180,7 @@ angular
         inputs.doNotDisturb = inputs.doNotDisturb || false;
         inputs.location = inputs.location || null;
         inputs.color = inputs.color || listCreateCtrl.randomColor();
-        inputs.icon = inputs.icon || "interface";
+        inputs.icon = inputs.icon || listCreateCtrl.randomIcon();
 
         if (listCreateCtrl.listID !== undefined) {
           return lists.update(listCreateCtrl.listID, inputs, function() {
