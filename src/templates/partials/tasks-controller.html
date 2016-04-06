@@ -1,6 +1,6 @@
 <div class="row tasks-ctrl no-margin window-size" ng-if="tasksCtrl.show">
   <div class="no-padding col-xs-12">
-    <header class="tc-header col-xs-12" ng-class="tasksCtrl.list.color + '-back'">
+    <header class="tc-header col-xs-12" ng-class="[(tasksCtrl.list.color + '-back'), (standalone ? 'standalone-pad-top' : '')]">
       <div class="back-button">
         <a href="#/lists"><span class="flaticon-arrows"></span></a>
       </div>

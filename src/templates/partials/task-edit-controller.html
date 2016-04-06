@@ -1,6 +1,6 @@
 <div class="row task-edit-ctrl no-margin window-size" ng-if="taskEditCtrl.show">
   <div class="col-xs-12">
-    <header class="col-xs-12">
+    <header class="col-xs-12" ng-class="standalone ? 'standalone-pad-top' : ''">
       <div class="back-button">
         <a href="" ng-href="#/list/{{taskEditCtrl.listID}}">^</a>
       </div>

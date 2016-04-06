@@ -1,6 +1,6 @@
 <div class="row list-create-ctrl no-margin window-size" ng-if="listCreateCtrl.show">
   <div class="no-padding col-xs-12">
-    <header class="lcc-header col-xs-12" ng-class="listCreateCtrl.inputs.color + '-back'">
+    <header class="lcc-header col-xs-12" ng-class="[(listCreateCtrl.inputs.color + '-back'), (standalone ? 'standalone-pad-top' : '')]">
       <h1>{{ listCreateCtrl.inputs.name || 'create a list' }}</h1>
       <div class="back-button">
         <a href="#/lists" ng-href="{{ '#/' + (listCreateCtrl.listID ? 'list/' + listCreateCtrl.listID : 'lists') }}"><span class="flaticon-arrows"></span></a>

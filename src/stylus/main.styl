@@ -119,13 +119,15 @@ html, body
   margin 0 auto
   padding 0
   width 100%
-  height 100%
+  height auto
   font-size 16px
   letter-spacing -.5px
   font-weight 400
   font-family 'Lato', sans-serif
   color $white
-  overflow hidden
+  overflow scroll
+  overflow-x hidden
+  overflow-y scroll
 
 body
   background-color transparent
@@ -178,7 +180,8 @@ body
 .container-fluid
   padding 0
   width 100%
-  height 100%
+  height auto
+  overflow scroll
   overflow-x hidden
   overflow-y scroll
 
@@ -188,7 +191,7 @@ body
 .no-margin
   margin 0
 
-.standalone header
+.standalone .standalone-pad-top
   padding-top 30px
 
 .slide
@@ -501,6 +504,9 @@ header
   bottom 12px
   left 0
   font-size 75%
+  a
+    display inline-block
+    margin-right 30px
 
 .settings-form
   color $dark-grey
@@ -598,6 +604,9 @@ input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-but
   bottom 12px
   left 0
   font-size 75%
+  a
+    display inline-block
+    margin-right 30px
 
 .task-icon
   font-size 60%

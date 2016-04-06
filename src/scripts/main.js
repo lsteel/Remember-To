@@ -34,6 +34,8 @@ var project = {},
 
 project.init = function(){
 
+	//FastClick.attach(document.body);
+
   winWidth = $(window).width();
   winHeight = $(window).height();
 
