@@ -112,6 +112,12 @@ img
 //   color $white
 //end section to remove
 
+
+//Required for ng-sortable to function on mobile for scroll
+.as-sortable-item
+  -ms-touch-action auto
+  touch-action auto
+
 html
   -webkit-font-smoothing: antialiased;
 
@@ -504,9 +510,9 @@ header
   bottom 12px
   left 0
   font-size 75%
+  z-index 9999
   a
     display inline-block
-    margin-right 30px
 
 .settings-form
   color $dark-grey
@@ -598,15 +604,6 @@ input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-but
       font-weight 400
       &:before
         margin-left 0
-
-.back-button
-  position absolute
-  bottom 12px
-  left 0
-  font-size 75%
-  a
-    display inline-block
-    margin-right 30px
 
 .task-icon
   font-size 60%
