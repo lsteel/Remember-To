@@ -3,16 +3,16 @@
     <h1 class="login-title">remember to</h1>
     <form class="login-form col-xs-12 no-padding" name="loginForm" ng-submit="loginCtrl.submit(loginCtrl.inputs.email, loginCtrl.inputs.password, loginCtrl.inputs.remember)">
       <div class="input-group">
-        <input tabindex="1" class="form-control email-input" placeholder="email" name="email" type="text" ng-model="loginCtrl.inputs.email" />
-        <span class="input-group-addon email-input"><input tabindex="4" class="checkbox-custom" type="checkbox" ng-model="loginCtrl.inputs.remember" ng-init="loginCtrl.inputs.remember = false"><label class="checkbox-custom-label">remember me</label></span>
+        <input tabindex="1" class="needsclick form-control email-input" placeholder="email" name="email" type="text" ng-model="loginCtrl.inputs.email" />
+        <span class="input-group-addon email-input"><input tabindex="4" class="needsclick checkbox-custom" type="checkbox" ng-model="loginCtrl.inputs.remember" ng-init="loginCtrl.inputs.remember = false"><label class="checkbox-custom-label">remember me</label></span>
       </div>
       <div class="input-group">
-        <input tabindex="2" class="form-control password-input" placeholder="password" name="password" type="{{loginCtrl.passwordType}}" ng-model="loginCtrl.inputs.password" />
-        <span class="input-group-addon password-input"><a href="" ng-click="loginCtrl.switchInputType()"><span class="glyphicon" ng-class="{'glyphicon-eye-close': loginCtrl.passwordType === 'password', 'glyphicon-eye-open': loginCtrl.passwordType === 'text'}"></span></a></span>
+        <input tabindex="2" class="needsclick form-control password-input" placeholder="password" name="password" type="{{loginCtrl.passwordType}}" ng-model="loginCtrl.inputs.password" />
+        <span class="input-group-addon password-input"><a href="" ng-click="loginCtrl.switchInputType()" class="needsclick"><span class="glyphicon" ng-class="{'glyphicon-eye-close': loginCtrl.passwordType === 'password', 'glyphicon-eye-open': loginCtrl.passwordType === 'text'}"></span></a></span>
       </div>
 
 
-        <button tabindex="3" type="submit" ng-click="loginCtrl.inputType = 'signin'" class="signin-btn btn btn-default col-xs-12">sign in</button>
+        <button tabindex="3" type="submit" ng-click="loginCtrl.inputType = 'signin'" class="needsclick signin-btn btn btn-default col-xs-12">sign in</button>
         <button type="submit" ng-click="loginCtrl.inputType = 'signup'" class="btn btn-link">sign up</button>
         <button type="submit" ng-click="loginCtrl.inputType = 'forgot'" class="btn btn-link">forgot password</button>
         <a href="http://remto.xyz" target="_blank" class="remto-link btn btn-link">remto.xyz</a>
