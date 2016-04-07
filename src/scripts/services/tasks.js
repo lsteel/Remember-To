@@ -79,9 +79,9 @@ angular
         fireTask.$loaded().then(function() {
           console.log('loaded');
           fireTask.name = inputs.name.trim().toLowerCase();
-          fireTask.repeat = inputs.repeat;
-          fireTask.notes = inputs.notes;
-          fireTask.tags = inputs.tags;
+          fireTask.repeat = inputs.repeat || null;
+          fireTask.notes = inputs.notes || null;
+          fireTask.tags = inputs.tags || null;
           fireTask.$save().then(function() {
             console.log('saved');
             cb();

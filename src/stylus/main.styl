@@ -516,7 +516,7 @@ header
 
 .settings-form
   color $dark-grey
-  input
+  input, textarea
     margin 10px auto
     padding 1px 10px 2px
     font-size 150%
@@ -645,6 +645,35 @@ input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-but
     color $white
   &:-ms-input-placeholder
     color $white
+
+
+// TASK EDIT SCREEN
+
+.task-edit-ctrl
+  background $less-clear-white
+  .settings-form
+    input
+      font-size 110%
+  .submit-btn
+    position absolute
+    bottom 3px
+    right 20px
+    font-size 150%
+    font-weight 700
+
+.tec-header
+  padding 15px 10px 20px
+  border 0
+  text-align center
+  transition background .5s ease
+  h1
+    font-size 150%
+    font-weight 700
+    span
+      font-size 50%
+      font-weight 400
+      &:before
+        margin-left 0
 
 
 

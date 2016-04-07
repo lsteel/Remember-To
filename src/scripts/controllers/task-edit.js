@@ -2,17 +2,19 @@ angular
   .module('TaskEditController', [
     'appAuth',
     'appUsers',
+    'appLists',
     'appTasks',
   ])
   .controller('TaskEditController', [
     '$rootScope',
     'authFuncs',
     'users',
+    'lists',
     'tasks',
     '$filter',
     '$location',
     '$routeParams',
-    function ($rootScope, authFuncs, users, tasks, $filter, $location, $routeParams) {
+    function ($rootScope, authFuncs, users, lists, tasks, $filter, $location, $routeParams) {
       $rootScope.rsLoading = true;
       var taskEditCtrl = this;
       taskEditCtrl.show = false;
@@ -66,8 +68,6 @@ angular
 
       taskEditCtrl.inputs = {};
 
-      console.log(taskEditCtrl.inputs);
-
       if (taskEditCtrl.taskID !== undefined) {
         tasks.watchTask(taskEditCtrl.listID, taskEditCtrl.taskID, function(changed) {
           $rootScope.rsLoading = true;
@@ -88,6 +88,28 @@ angular
             });
           }
         });
+      }
+
+      if (taskEditCtrl.listID !== undefined) {
+        $rootScope.rsLoading = true;
+        lists.watchList(taskEditCtrl.listID, function(changed) {
+          $rootScope.rsLoading = true;
+          if (changed) {
+            lists.getSingle(taskEditCtrl.uid, taskEditCtrl.listID, function(list) {
+              if (list === null) {
+                $location.url('/lists');
+              }
+              else {
+                taskEditCtrl.list = list;
+                console.log(list);
+                $rootScope.rsLoading = false;
+              }
+            });
+          }
+        });
+      }
+      else {
+        $location.url('/lists');
       }
 
       taskEditCtrl.submit = function(inputs) {
