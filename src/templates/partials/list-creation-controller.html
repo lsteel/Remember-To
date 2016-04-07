@@ -25,7 +25,32 @@
         </div>
         <!-- end icon selection -->
       </form>
-      <button type="button" name="delete" class="btn btn-danger" ng-click="listCreateCtrl.delete()" ng-if="listCreateCtrl.listID">delete list</button>
+      <button type="button" data-toggle="modal" data-target="#myModal" class="delete-btn btn btn-danger" ng-if="listCreateCtrl.listID">delete list</button>
     </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close close-btn" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+            <h4 class="modal-title">Delete List?</h4>
+          </div>
+          <div class="modal-body">
+            <p>You are about to delete the list "{{ listCreateCtrl.inputs.name }}". This is permanent and will remove this list from all users sharing this list.</p>
+            <br />
+            <p><strong>Are you sure you wish to delete this list?</strong></p>
+          </div>
+          <div class="modal-footer">
+            <button data-dismiss="modal" ng-click="listCreateCtrl.delete()" class="modal-delete-btn btn btn-danger">permanently delete list</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 </div>

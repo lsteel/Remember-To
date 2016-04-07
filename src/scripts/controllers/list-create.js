@@ -200,6 +200,7 @@ angular
 
       listCreateCtrl.delete = function() {
         if (listCreateCtrl.listID !== undefined) {
+          angular.element('.modal-backdrop').remove();
           return lists.delete(listCreateCtrl.uid, listCreateCtrl.listID, listCreateCtrl.list.userSettingsID, function() {
             listCreateCtrl.inputs = {};
             $location.url('/lists');
