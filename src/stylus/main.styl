@@ -118,6 +118,13 @@ img
   -ms-touch-action auto
   touch-action auto
 
+.modal-header
+  color $dark-grey
+.close-btn
+  z-index 9999
+.modal-body
+  color $dark-grey
+
 html
   -webkit-font-smoothing: antialiased;
 
@@ -490,6 +497,7 @@ header
     right 20px
     font-size 150%
     font-weight 700
+    font-family arial
 
 .lcc-header
   padding 15px 10px 20px
@@ -652,20 +660,31 @@ input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-but
 .task-edit-ctrl
   background $less-clear-white
   .settings-form
-    input
-      font-size 110%
+    input, textarea
+      font-size 120%
   .submit-btn
     position absolute
     bottom 3px
     right 20px
     font-size 150%
     font-weight 700
+  .clear-btn
+    margin 5px 0 20px
+  .delete-btn
+    margin 30px 0 20px
 
 .tec-header
   padding 15px 10px 20px
   border 0
   text-align center
   transition background .5s ease
+  .submit-btn
+    position absolute
+    bottom 3px
+    right 20px
+    font-size 150%
+    font-weight 700
+    font-family arial
   h1
     font-size 150%
     font-weight 700
@@ -674,6 +693,13 @@ input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-but
       font-weight 400
       &:before
         margin-left 0
+
+.tags-wrapper
+  margin 10px 0
+
+.tag-container
+  margin 10px 10px 10px 0
+  font-size 110%
 
 
 

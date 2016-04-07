@@ -126,6 +126,7 @@ angular
       };
 
       taskEditCtrl.delete = function() {
+        angular.element('.modal-backdrop').html('');
         tasks.delete(taskEditCtrl.listID, taskEditCtrl.taskID, function(lid) {
           $location.url('/list/' + lid);
         });
