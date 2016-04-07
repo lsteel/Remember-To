@@ -5,6 +5,7 @@ angular
     'angular-md5',
     'as.sortable',
     'LoginController',
+    'SettingsController',
     'ListsController',
     'ListCreateController',
     'TasksController',
@@ -24,6 +25,11 @@ angular
           templateUrl: '/partials/login-controller.html',
           controller: 'LoginController',
           controllerAs: 'loginCtrl'
+        })
+        .when('/settings', {
+          templateUrl: '/partials/settings-controller.html',
+          controller: 'SettingsController',
+          controllerAs: 'settingsCtrl'
         })
         .when('/lists', {
           templateUrl: '/partials/lists-controller.html',
