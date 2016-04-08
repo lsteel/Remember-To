@@ -25,7 +25,7 @@
         </div>
         <!-- end icon selection -->
       </form>
-      <button type="button" data-toggle="modal" data-target="#myModal" class="delete-btn btn btn-danger" ng-if="listCreateCtrl.listID">delete list</button>
+      <button type="button" data-toggle="modal" data-target="#myModal" class="delete-btn btn btn-danger" ng-if="listCreateCtrl.listID"><span class="glyphicon glyphicon-trash"></span> delete list</button>
     </div>
 
     <!-- Modal -->
@@ -46,7 +46,7 @@
             <p><strong>Are you sure you wish to delete this list?</strong></p>
           </div>
           <div class="modal-footer">
-            <button data-dismiss="modal" ng-click="listCreateCtrl.delete()" class="modal-delete-btn btn btn-danger">permanently delete list</button>
+            <button data-dismiss="modal" ng-click="listCreateCtrl.delete()" class="modal-delete-btn btn btn-danger"><span class="glyphicon glyphicon-trash"></span> permanently delete list</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
           </div>
         </div>
