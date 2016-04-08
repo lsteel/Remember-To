@@ -20,6 +20,8 @@ angular
     $rootScope.rsLoading = true;
     var tasksCtrl = this;
     tasksCtrl.show = false;
+    
+    tasksCtrl.showCompleted = false;
 
 
     tasksCtrl.listID = $routeParams.lid;
@@ -87,6 +89,15 @@ angular
         });
       }
     });
+
+    tasksCtrl.showCompletedButton = function() {
+      for (var obj in tasksCtrl.tasks) {
+        if (obj.completed === true) {
+          return true;
+        }
+      }
+      return false;
+    };
 
     tasksCtrl.submit = function(inputs) {
 

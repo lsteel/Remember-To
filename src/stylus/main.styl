@@ -490,6 +490,7 @@ header
 //LISTS CREATE/EDIT SCREEN
 
 .list-create-ctrl
+  padding-top 60px
   background $less-clear-white
   .submit-btn
     position absolute
@@ -498,8 +499,13 @@ header
     font-size 150%
     font-weight 700
     font-family arial
+  .delete-btn
+    margin 30px 0 20px
 
 .lcc-header
+  position fixed
+  top 0
+  z-index 9999
   padding 15px 10px 20px
   border 0
   text-align center
@@ -612,6 +618,18 @@ input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-but
       font-weight 400
       &:before
         margin-left 0
+
+.tasks-wrapper
+  opacity 1
+  transition opacity .75s ease
+  &.ng-hide
+    opacity 0
+
+.show-completed-button
+  opacity 1
+  transition opacity .75s ease
+  &.ng-hide
+    opacity 0
 
 .task-icon
   font-size 60%

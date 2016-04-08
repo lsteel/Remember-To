@@ -10,7 +10,7 @@
     </header>
     <div class="tasks-wrapper no-padding col-xs-12">
       <div data-as-sortable="tasksCtrl.dragControlListeners" data-ng-model="tasksCtrl.tasks" class="task-container">
-        <div data-as-sortable-item class="task" ng-repeat="todo in tasksCtrl.tasks" ng-if="!todo.completed">
+        <div data-as-sortable-item class="task" ng-repeat="todo in activeTasks = (tasksCtrl.tasks | filter:{completed: false})">
           <div data-as-sortable-item-handle>
             <span class="task-icon check-icon" ng-click="tasksCtrl.completeIt(tasksCtrl.listID, todo.tid)" ng-class="todo.completed ? 'flaticon-interface-1' : 'flaticon-squares'"></span>
             <a href="" ng-href="#/list/{{ tasksCtrl.listID }}/edit-task/{{todo.tid}}">
@@ -21,12 +21,12 @@
         </div>
       </div>
     </div>
-    <div class="col-xs-12 button-container">
-      <span class="btn btn-squared" ng-init="tasksCtrl.showCompleted = false" ng-click="tasksCtrl.showCompleted = !tasksCtrl.showCompleted">{{ tasksCtrl.showCompleted ? 'hide' : 'show' }} completed</span>
+    <div class="col-xs-12 button-container show-completed-button" ng-show="tasksCtrl.finishedTasks.length > 0">
+      <span class="btn btn-squared" ng-click="tasksCtrl.showCompleted = !tasksCtrl.showCompleted">{{ tasksCtrl.showCompleted ? 'hide' : 'show' }} completed</span>
     </div>
-    <div class="tasks-wrapper no-padding col-xs-12" ng-if="tasksCtrl.showCompleted">
+    <div class="tasks-wrapper no-padding col-xs-12" ng-show="tasksCtrl.showCompleted">
       <div data-as-sortable="tasksCtrl.dragControlListeners" data-ng-model="tasksCtrl.tasks" class="task-container">
-        <div data-as-sortable-item class="task" ng-repeat="todo in tasksCtrl.tasks" ng-if="todo.completed">
+        <div data-as-sortable-item class="task" ng-repeat="todo in tasksCtrl.finishedTasks = (tasksCtrl.tasks | filter:{completed: true})">
           <div data-as-sortable-item-handle>
             <span class="task-icon check-icon" ng-click="tasksCtrl.completeIt(tasksCtrl.listID, todo.tid)" ng-class="todo.completed ? 'flaticon-interface-1' : 'flaticon-squares'"></span>
             <a href="" ng-href="#/list/{{ tasksCtrl.listID }}/edit-task/{{todo.tid}}">

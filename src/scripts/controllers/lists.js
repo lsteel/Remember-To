@@ -102,7 +102,7 @@ angular
       userSettings.get(listsCtrl.uid, function(settingsObj) {
         listsCtrl.settings = settingsObj;
         //http://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200
-        listsCtrl.gravatarURL = 'http://www.gravatar.com/avatar/' + md5.createHash(listsCtrl.settings.email.trim() || '') + '.jpg';
+        listsCtrl.gravatarURL = 'http://www.gravatar.com/avatar/' + md5.createHash(listsCtrl.settings.email.trim() || '') + '.jpg?d=' + encodeURIComponent('http://app.remto.xyz/images/remember-to-avatar.jpg');
         //console.log(listsCtrl.settings);
       });
 

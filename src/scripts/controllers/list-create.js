@@ -130,7 +130,7 @@ angular
 
       listCreateCtrl.randomIcon = function() {
         var num = Math.floor(Math.random() * listCreateCtrl.icons.length);
-        var icon = listCreateCtrl.colors[num];
+        var icon = listCreateCtrl.icons[num];
         listCreateCtrl.selectedIcon = num;
         return icon;
       };
