@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html ng-app="RemToApp" lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" type="image/jpg" href="images/favicon.jpg">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="Remember To">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="manifest" href="manifest.json">
-    <link rel="icon" sizes="196x196" href="images/Icon-196.png">
-    <link rel="apple-touch-icon" href="images/Icon-60.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="images/Icon-76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="images/Icon-120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="images/Icon-152.png">
-    <title>Remember To</title>
-    <!-- TypeKit Fonts -->
-    <!-- <script src="https://use.typekit.net/bhl5ioi.js"></script>
-    <script>try{Typekit.load({ async: true });}catch(e){}</script> -->
-    <!-- Backup Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,300,700,300italic" rel="stylesheet" type="text/css">
-    <!-- Includes all compiled css based bower components; i.e. bootstrap.css, main.css, etc. -->
-    <link rel="stylesheet" href="css/app.min.css">
-  </head>
-  <body ng-controller="MainController as mainCtrl">
-    <div class="container-fluid">
-      <div class="background-image">
-        <img src="images/misty-mountains.jpg" />
-      </div>
-      <div class="view col-xs-12 no-padding" ng-view autoscroll="false" ng-class="{slides: path !== '/#/login', standalone: standalone}"></div>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/jpg" href="images/favicon.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Remember To">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" sizes="196x196" href="images/Icon-196.png">
+  <link rel="apple-touch-icon" href="images/Icon-60.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="images/Icon-76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="images/Icon-120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="images/Icon-152.png">
+  <title>Remember To</title>
+  <!-- TypeKit Fonts -->
+  <!-- <script src="https://use.typekit.net/bhl5ioi.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script> -->
+  <!-- Backup Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,300,700,300italic" rel="stylesheet" type="text/css">
+  <!-- Includes all compiled css based bower components; i.e. bootstrap.css, main.css, etc. -->
+  <link rel="stylesheet" href="css/app.min.css">
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-76186122-1', 'auto');
+  </script>
+</head>
+<body ng-controller="MainController as mainCtrl">
+  <div class="container-fluid">
+    <div class="background-image">
+      <img src="images/misty-mountains.jpg" />
     </div>
-    <div class="loading" ng-if="rsLoading"><img src="images/remember-to-loading.gif" /></div>
-    <!-- <div class="screen-resolution"><p></p></div> -->
-    <script src="js/app.min.js"></script>
-  </body>
+    <div class="view col-xs-12 no-padding" ng-view autoscroll="false" ng-class="{slides: path !== '/#/login', standalone: standalone}"></div>
+  </div>
+  <div class="loading" ng-if="rsLoading"><img src="images/remember-to-loading.gif" /></div>
+  <!-- <div class="screen-resolution"><p></p></div> -->
+  <script src="js/app.min.js"></script>
+</body>
 </html>

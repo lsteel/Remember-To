@@ -101,9 +101,9 @@ angular
         // }, authHandler);
       },
 
-      logout: function() {
+      logout: function(cb) {
         auth.$unauth();
-        $location.url('/');
+        cb();
       },
 
       isLoggedIn: function(cb) {

@@ -1,5 +1,7 @@
 angular
   .module('RemToApp', [
+    'angulartics',
+    'angulartics.google.analytics',
     'ngRoute',
     'ngAnimate',
     'angular-md5',

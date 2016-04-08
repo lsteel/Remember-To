@@ -26,5 +26,11 @@ angular
         });
       })();
 
+      settingsCtrl.logout = function() {
+        authFuncs.logout(function() {
+          $location.url('/');
+        });
+      };
+
     },
   ]);
