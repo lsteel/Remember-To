@@ -34,7 +34,7 @@ angular
 
       listCreateCtrl.colors = [ "red", "orange", "yellow", "green",  "blue", "violet"];
 
-      listCreateCtrl.selectedColor;
+      listCreateCtrl.selectedColor = '';
 
       listCreateCtrl.selectColor = function(index) {
          listCreateCtrl.selectedColor = index;
@@ -122,7 +122,7 @@ angular
         'technology-9'
       ];
 
-      listCreateCtrl.selectedIcon;
+      listCreateCtrl.selectedIcon = '';
 
       listCreateCtrl.selectIcon = function(index) {
          listCreateCtrl.selectedIcon = index;
@@ -139,7 +139,12 @@ angular
 
       listCreateCtrl.inputs = {
         "color": color,
-        "icon": icon
+        "icon": icon,
+        "users": {}
+      };
+
+      listCreateCtrl.inputs.users[listCreateCtrl.uid] = {
+        'isOwner': true
       };
 
       if (listCreateCtrl.listID !== undefined) {
@@ -176,11 +181,8 @@ angular
       }
 
       listCreateCtrl.submit = function(inputs) {
-        inputs.users = inputs.users || listCreateCtrl.uid;
         inputs.doNotDisturb = inputs.doNotDisturb || false;
         inputs.location = inputs.location || null;
-        inputs.color = inputs.color || listCreateCtrl.randomColor();
-        inputs.icon = inputs.icon || listCreateCtrl.randomIcon();
 
         if (listCreateCtrl.listID !== undefined) {
           return lists.update(listCreateCtrl.listID, inputs, function() {

@@ -35,8 +35,7 @@ angular
 
         var listKey = fireLists.$id;
         fireLists.listName = inputs.name.trim().toLowerCase();
-        fireLists.users = [inputs.users];
-        fireLists.owners = [inputs.users];
+        fireLists.users = inputs.users;
 
         fireLists.$save().then(function() {
           return cb(listKey, inputs);
@@ -51,7 +50,6 @@ angular
         fireList.$loaded().then(function() {
           fireList.listName = inputs.name.trim().toLowerCase();
           fireList.users = inputs.users;
-          fireList.owners = inputs.users;
           cb();
           fireList.$save().then(function() {
           });
