@@ -14,7 +14,9 @@ angular
         var task = {
           'name': inputs.name.trim().toLowerCase(),
           'star': inputs.star,
-          'completed': false
+          'completed': false,
+          'dateCompleted': '',
+          'timesCompleted': 0
         };
 
         fireTasks.$add(task).then(function(ref) {
@@ -64,11 +66,15 @@ angular
       },
 
       completed: function(lid, tid) {
-        var tasksRef = new Firebase("https://remto.firebaseio.com/lists/" + lid + "/tasks/" + tid);
-        var fireTask = $firebaseObject(tasksRef);
+        var taskRef = new Firebase("https://remto.firebaseio.com/lists/" + lid + "/tasks/" + tid);
+        var fireTask = $firebaseObject(taskRef);
 
         fireTask.$loaded().then(function() {
-          tasksRef.update({'completed': !fireTask.completed});
+          taskRef.update({
+            'completed': !fireTask.completed,
+            'dateCompleted': (fireTask.completed === false ? Date.now() : ''),
+            'timesCompleted': (fireTask.completed === false && typeof fireTask.timesCompleted === 'number' ? ++fireTask.timesCompleted || 0 : --fireTask.timesCompleted)
+          });
         });
       },
 
@@ -77,15 +83,12 @@ angular
         var fireTask = $firebaseObject(taskRef);
 
         fireTask.$loaded().then(function() {
-          console.log('loaded');
-          fireTask.name = inputs.name.trim().toLowerCase();
-          fireTask.repeat = inputs.repeat || null;
-          fireTask.notes = inputs.notes || null;
-          fireTask.tags = inputs.tags || null;
-          fireTask.$save().then(function() {
-            console.log('saved');
-            cb();
-          });
+          taskRef.update({
+            'name': inputs.name.trim().toLowerCase(),
+            'repeat': inputs.repeat || null,
+            'notes': inputs.notes || null,
+            'tags': inputs.tags || null
+          }, cb());
         });
       }
       //
