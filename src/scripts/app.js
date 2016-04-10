@@ -8,10 +8,11 @@ angular
     'as.sortable',
     'LoginController',
     'SettingsController',
+    'AccountController',
     'ListsController',
     'ListCreateController',
     'TasksController',
-    'TaskCreateController',
+    // 'TaskCreateController',
     'TaskEditController',
     'MainController',
     'loadingDirective',
@@ -33,6 +34,11 @@ angular
           controller: 'SettingsController',
           controllerAs: 'settingsCtrl'
         })
+        .when('/account-details', {
+          templateUrl: '/partials/account-controller.html',
+          controller: 'AccountController',
+          controllerAs: 'accountCtrl'
+        })
         .when('/lists', {
           templateUrl: '/partials/lists-controller.html',
           controller: 'ListsController',
@@ -53,11 +59,11 @@ angular
           controller: 'TasksController',
           controllerAs: 'tasksCtrl'
         })
-        .when('/create-task', {
-          templateUrl: '/partials/task-creation-controller.html',
-          controller: 'TaskCreateController',
-          controllerAs: 'taskCreateCtrl'
-        })
+        // .when('/create-task', {
+        //   templateUrl: '/partials/task-creation-controller.html',
+        //   controller: 'TaskCreateController',
+        //   controllerAs: 'taskCreateCtrl'
+        // })
         .when('/list/:lid/edit-task/:tid', {
           templateUrl: '/partials/task-edit-controller.html',
           controller: 'TaskEditController',

@@ -1,0 +1,26 @@
+<div class="row account-ctrl no-margin window-size" ng-if="accountCtrl.show">
+  <div class="no-padding col-xs-12">
+    <header class="ac-header col-xs-12" ng-class="standalone ? 'standalone-pad-top' : ''">
+      <div class="back-button">
+        <a href="#/settings"><span class="flaticon-arrows"></span></a>
+      </div>
+      <h1>account</h1>
+    </header>
+    <div class="settings-form form-container no-padding col-xs-12">
+      <span class="old-email">current email: {{ accountCtrl.emailInputs.oldEmail }}</span>
+      <form name="myForm" ng-submit="" validate>
+        <h2>add name</h2>
+        <input class="user-name" type="text" id="name" name="name" placeholder="full name" ng-model="accountCtrl.name" maxlength="50">
+        <h2>update email address</h2>
+        <input class="new-email" type="text" id="new-email" name="new email" placeholder="new email" ng-model="accountCtrl.emailInputs.newEmail" maxlength="50">
+        <input class="password" type="text" id="password" name="password" placeholder="password" ng-model="accountCtrl.emailInputs.password" maxlength="50">
+        <button type="button" class="new-email-btn btn signin-btn">update email</button>
+        <h2>change password</h2>
+        <input class="old-password" type="text" id="old-password" name="old-password" placeholder="old password" ng-model="accountCtrl.passwordInputs.oldPassword" maxlength="50">
+        <input class="new-password" type="text" id="new-password" name="new-password" placeholder="new password" ng-model="accountCtrl.passwordInputs.newPassword" maxlength="50">
+        <button type="button" class="new-email-btn btn signin-btn">change password</button>
+      </form>
+      <button type="button" data-toggle="modal" data-target="#myModal" class="delete-btn btn btn-danger" ng-if="accountCtrl.listID"><span class="glyphicon glyphicon-trash"></span> delete list</button>
+    </div>
+  </div>
+</div>
