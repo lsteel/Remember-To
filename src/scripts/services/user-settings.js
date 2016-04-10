@@ -84,13 +84,17 @@ angular
         var userURL = "https://remto.firebaseio.com/users/" + userID,
             userRef = new Firebase(userURL);
 
+        var userSettingsURL = "https://remto.firebaseio.com/users/" + userID + '/settings',
+            userSettingsRef = new Firebase(userSettingsURL);
+
+        userSettingsRef.update({
+          addTaskToTop: null,
+          listBadge: null,
+          starToTop: null,
+          useLocation: null
+        });
+
         userRef.update({
-          'settings': {
-            addTaskToTop: null,
-            listBadge: null,
-            starToTop: null,
-            useLocation: null
-          },
           'lists': null,
           'userExists': false
         }, function() {

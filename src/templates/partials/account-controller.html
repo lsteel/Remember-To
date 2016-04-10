@@ -7,7 +7,9 @@
       <h1>account</h1>
     </header>
     <div class="settings-form form-container no-padding col-xs-12">
-      <span class="old-email">current email: {{ accountCtrl.emailInputs.oldEmail }}</span>
+      <h2>account info</h2>
+      <p><strong>profile picture:</strong><br />Profile pictures are provided by gravatar. To create or update a gravatar go to <a href="https://en.gravatar.com/">gravatar.com</a></p>
+      <p><strong>current email:</strong> {{ accountCtrl.emailInputs.oldEmail }}</p>
       <form name="myForm" ng-submit="" validate>
         <h2>{{ accountCtrl.settings.name ? 'update' : 'add' }} your name</h2>
         <input class="user-name" type="text" id="name" name="name" placeholder="full name" ng-model="accountCtrl.name" maxlength="50">
@@ -21,6 +23,7 @@
         <input class="new-password" type="text" id="new-password" name="new-password" placeholder="new password" ng-model="accountCtrl.passwordInputs.newPassword" maxlength="50">
         <button type="button" class="new-password-btn btn signin-btn" ng-click="accountCtrl.newPassword(accountCtrl.passwordInputs)">change password</button>
       </form>
+      <h2 class="delete-section">delete account</h2>
       <button type="button" data-toggle="modal" data-target="#myModal" class="delete-btn btn btn-danger" >delete account</button>
 
 
