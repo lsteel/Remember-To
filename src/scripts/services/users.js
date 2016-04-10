@@ -1,6 +1,5 @@
 angular
 .module('appUsers', [
-  'appAuth',
   'appSettings',
 ])
 .factory('users', [

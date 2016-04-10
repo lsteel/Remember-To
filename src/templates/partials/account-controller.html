@@ -9,18 +9,55 @@
     <div class="settings-form form-container no-padding col-xs-12">
       <span class="old-email">current email: {{ accountCtrl.emailInputs.oldEmail }}</span>
       <form name="myForm" ng-submit="" validate>
-        <h2>add name</h2>
+        <h2>{{ accountCtrl.settings.name ? 'update' : 'add' }} your name</h2>
         <input class="user-name" type="text" id="name" name="name" placeholder="full name" ng-model="accountCtrl.name" maxlength="50">
+        <button type="button" class="user-name-btn btn signin-btn" ng-click="accountCtrl.saveName(accountCtrl.name)">save</button>
         <h2>update email address</h2>
         <input class="new-email" type="text" id="new-email" name="new email" placeholder="new email" ng-model="accountCtrl.emailInputs.newEmail" maxlength="50">
         <input class="password" type="text" id="password" name="password" placeholder="password" ng-model="accountCtrl.emailInputs.password" maxlength="50">
-        <button type="button" class="new-email-btn btn signin-btn">update email</button>
+        <button type="button" class="new-email-btn btn signin-btn" ng-click="accountCtrl.newEmail(accountCtrl.emailInputs)">update email</button>
         <h2>change password</h2>
         <input class="old-password" type="text" id="old-password" name="old-password" placeholder="old password" ng-model="accountCtrl.passwordInputs.oldPassword" maxlength="50">
         <input class="new-password" type="text" id="new-password" name="new-password" placeholder="new password" ng-model="accountCtrl.passwordInputs.newPassword" maxlength="50">
-        <button type="button" class="new-email-btn btn signin-btn">change password</button>
+        <button type="button" class="new-password-btn btn signin-btn" ng-click="accountCtrl.newPassword(accountCtrl.passwordInputs)">change password</button>
       </form>
-      <button type="button" data-toggle="modal" data-target="#myModal" class="delete-btn btn btn-danger" ng-if="accountCtrl.listID"><span class="glyphicon glyphicon-trash"></span> delete list</button>
+      <button type="button" data-toggle="modal" data-target="#myModal" class="delete-btn btn btn-danger" >delete account</button>
+
+
+      <!-- Modal -->
+      <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close close-btn" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+              <h4 class="modal-title">Delete Task?</h4>
+            </div>
+            <div class="modal-body">
+              <p>You are about to delete your account.</p>
+              <br />
+              <p><strong>This is not reversible. There is no reactivating a deleted account.</strong></p>
+              <br />
+              <p>You will be able to sign up again with this email address, but all of your saved lists and tasks will be lost.</p>
+              <br />
+              <p><strong>Enter your password below to delete your account:</strong></p>
+              <input class="old-password" type="text" id="old-password" name="old-password" placeholder="password" ng-model="accountCtrl.deleteAccountInputs.oldPassword" maxlength="50">
+            </div>
+            <div class="modal-footer">
+              <button data-dismiss="modal" ng-click="accountCtrl.deleteAccount(accountCtrl.deleteAccountInputs)" class="modal-delete-btn btn btn-danger"><span class="glyphicon glyphicon-trash"></span> permanently delete account</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
     </div>
+  </div>
+
+  <div class="settings-alert col-xs-12 alert alert-danger" ng-show="accountCtrl.errorMessage">
+    <p>{{ accountCtrl.errorMessage }}</p>
   </div>
 </div>

@@ -771,11 +771,22 @@ input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-but
 .account-ctrl
   background $less-clear-white
   color $dark-grey
+  .settings-form
+    margin-top 67px
+  .signin-btn
+    padding 6px 13px 9px
   .old-email
     display block
     margin-top 20px
     font-size 120%
-  input, button, span
+  .delete-btn
+    margin 50px 15px 20px
+  .settings-alert
+    position fixed
+    top 85px
+    left 0
+    z-index 9999
+  input, button, .old-email
     margin-left 15px
   h2
     margin-top 20px
@@ -783,24 +794,16 @@ input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-but
     font-size 120%
     text-align center
     background $clear-white
-  p
-    margin 5px auto 0
-    padding 0 20px 10px
-    max-width 200px
-    font-size 120%
-    a:link, a:visited, a:hover, a:active
-      text-decoration none
-    span
-      font-size 100%
-      margin-right 10px
-      vertical-align -2px
 
 .ac-header
+  position fixed
+  top 0
   padding 15px 10px 20px
   border 0
   background $less-clear-white
   text-align center
   transition background .5s ease
+  z-index 9999
 
 
 
