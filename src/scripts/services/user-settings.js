@@ -91,6 +91,7 @@ angular
             starToTop: null,
             useLocation: null
           },
+          'lists': null,
           'userExists': false
         }, function() {
           authObj.$removeUser(cred).then(function() {
