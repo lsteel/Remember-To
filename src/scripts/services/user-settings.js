@@ -6,7 +6,7 @@ angular
   function($firebaseAuth, $firebaseObject) {
 
     var userSettings = {
-      create: function(userID, userCred) {
+      create: function(userID, userCred, cb) {
         var settingsURL = "https://remto.firebaseio.com/users/" + userID + "/settings",
         userSettingsRef = new Firebase(settingsURL),
         fireUserSettings = $firebaseObject(userSettingsRef);
@@ -20,6 +20,7 @@ angular
 
         fireUserSettings.$save().then(function() {
           console.log('Setting set.');
+          cb(userID);
         }, function(error) {
           console.log("Error:", error);
         });

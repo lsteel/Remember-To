@@ -1,14 +1,16 @@
 angular
 .module('appUsers', [
   'appSettings',
+  'appLists',
 ])
 .factory('users', [
   '$rootScope',
+  'lists',
   '$location',
   '$firebaseObject',
   '$firebaseArray',
   'userSettings',
-  function($rootScope, $location, $firebaseObject, $firebaseArray, userSettings) {
+  function($rootScope, lists, $location, $firebaseObject, $firebaseArray, userSettings) {
 
     var users = {
 
@@ -19,7 +21,55 @@ angular
 
         fireUser.userExists = true;
         fireUser.$save().then(function() {
-          userSettings.create(fireUser.$id, userCred);
+          userSettings.create(fireUser.$id, userCred, function(uid) {
+            console.log('callback reached');
+            var defaultListOne = {
+              "name": 'asap',
+              "users": {},
+              "doNotDisturb": false,
+              "color": 'red',
+              "icon": 'weapon',
+              "location": null
+            };
+            defaultListOne.users[uid] = {
+              'isOwner': true
+            };
+            lists.create(uid, defaultListOne, function(listID, inputs) {
+              console.log('default 1 created');
+              users.addList(uid, inputs, listID);
+            });
+            var defaultListTwo = {
+              "name": 'at the store',
+              "users": {},
+              "doNotDisturb": false,
+              "color": 'green',
+              "icon": 'commerce',
+              "location": null
+            };
+            defaultListTwo.users[uid] = {
+              'isOwner': true
+            };
+            lists.create(uid, defaultListTwo, function(listID, inputs) {
+              console.log('default 2 created');
+              users.addList(uid, inputs, listID);
+            });
+
+            var defaultListThree = {
+              "name": 'before bed',
+              "users": {},
+              "doNotDisturb": false,
+              "color": 'blue',
+              "icon": 'night-1',
+              "location": null
+            };
+            defaultListThree.users[uid] = {
+              'isOwner': true
+            };
+            lists.create(uid, defaultListThree, function(listID, inputs) {
+              console.log('default 3 created');
+              users.addList(uid, inputs, listID);
+            });
+          });
         }, function(error) {
           console.log("Error:", error);
         });

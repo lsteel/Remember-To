@@ -1,14 +1,12 @@
 angular
 .module('appLists', [
-  'appUsers',
   'appTasks',
 ])
 .factory('lists', [
-  'users',
   'tasks',
   '$firebaseObject',
   '$firebaseArray',
-  function(users, tasks, $firebaseObject, $firebaseArray) {
+  function(tasks, $firebaseObject, $firebaseArray) {
 
     var lists = {
 
