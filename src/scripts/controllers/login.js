@@ -28,6 +28,9 @@ angular
         loginCtrl[loginCtrl.inputType](email, password, remember, function(err, userData) {
           var emailError = 'Firebase.authWithPassword failed: First argument must contain the key "email" with type "string"';
           var passError = 'Firebase.authWithPassword failed: First argument must contain the key "password" with type "string"';
+          var suEmailErr = 'Firebase.createUser failed: First argument must contain the key "email" with type "string"';
+          var suPassErr = 'Firebase.createUser failed: First argument must contain the key "password" with type "string"';
+          var invalidEmail = 'The specified email address is invalid.';
           var wrongPass = 'The specified password is incorrect.';
           var noUser = 'The specified user does not exist.';
           var errorMessage;
@@ -41,8 +44,11 @@ angular
           }
           else {}
 
-          if (errorMessage === emailError || errorMessage === passError) {
-            messageAlert = 'An email address and password are required to login.';
+          if (errorMessage === emailError || errorMessage === passError || errorMessage === suEmailErr || errorMessage === suPassErr) {
+            messageAlert = 'An email address and password are required to login or sign up';
+          }
+          else if (errorMessage === invalidEmail) {
+            messageAlert = 'Whoops. That email address doesn\'t look valid.';
           }
           else if (errorMessage === wrongPass) {
             messageAlert = 'That password seems to be incorrect. Fancy another go?';
@@ -62,7 +68,7 @@ angular
       };
 
       loginCtrl.signup = function(email, password, remember, cb) {
-        return authFuncs.create(email, password, cb);
+        return authFuncs.create(email, password, remember, cb);
       };
       loginCtrl.forgot = function(email, password, cb) {
         return authFuncs.resetPass(email, cb);

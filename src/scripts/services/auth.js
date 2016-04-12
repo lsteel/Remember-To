@@ -44,7 +44,7 @@ angular
             })
             .catch(function(error) {
               console.error("Error: ", error);
-              cb(error, null);
+              cb(error, false);
             });
 
 
