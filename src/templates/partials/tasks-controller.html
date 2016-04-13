@@ -38,9 +38,9 @@
       </div>
     </div>
     <div class="add-todo-container col-xs-12">
-      <form name="myForm" ng-submit="tasksCtrl.submit(tasksCtrl.addTodo)" validate>
+      <form class="add-todo-form" name="myForm" ng-submit="tasksCtrl.submit(tasksCtrl.addTodo)" validate>
         <input class="text-input" type="text" name="todo" placeholder="+ add to-do" ng-model="tasksCtrl.addTodo.name" maxlength="50" required>
-        <span ng-if="tasksCtrl.addTodo.name" ng-model="tasksCtrl.addTodo.star" ng-click="tasksCtrl.addTodo.star = !tasksCtrl.addTodo.star">{{(tasksCtrl.addTodo.star ? '★' : '☆')}}</span>
+        <span ng-if="tasksCtrl.addTodo.name" ng-model="tasksCtrl.addTodo.star" ng-click="tasksCtrl.addTodo.star = !tasksCtrl.addTodo.star" ng-class="tasksCtrl.addTodo.star ? 'flaticon-favorite' : 'flaticon-night'"></span>
         <button ng-disabled="myForm.$invalid" type="submit" name="submit" class="hidden">send</button>
       </form>
     </div>

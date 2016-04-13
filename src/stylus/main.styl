@@ -243,6 +243,16 @@ body
 
 //LOGIN SCREEN
 
+.login-ctrl
+  .signin-btn
+    border-top-right-radius 0
+    border-bottom-right-radius 0
+  .sign-up-btn
+    border-top-right-radius 5px
+    border-bottom-right-radius 5px
+    border-top-left-radius 0
+    border-bottom-left-radius 0
+
 .login-title
   margin-top 15px
   padding-bottom 20px
@@ -383,6 +393,52 @@ body
   color $blue
   background-color $white
   border-color $blue
+
+
+.sign-up-btn
+  margin-top 20px
+  padding 13px
+  color $white
+  font-size 100%
+  background $blue
+  border $blue
+  border-radius 5px
+
+.sign-up-btn
+  color #fff
+  background-color $green
+  border-color $green
+
+.sign-up-btn:focus,
+.sign-up-btn.focus
+  color $green
+  background-color $white
+  border-color $green
+
+.sign-up-btn:hover
+  color $green
+  background-color $white
+  border-color $green
+
+.sign-up-btn:active,
+.sign-up-btn.active,
+.open > .dropdown-toggle.sign-up-btn
+  color $green
+  background-color $white
+  border-color $green
+
+.sign-up-btn:active:hover,
+.sign-up-btn.active:hover,
+.open > .dropdown-toggle.sign-up-btn:hover,
+.sign-up-btn:active:focus,
+.sign-up-btn.active:focus,
+.open > .dropdown-toggle.sign-up-btn:focus,
+.sign-up-btn:active.focus,
+.sign-up-btn.active.focus,
+.open > .dropdown-toggle.sign-up-btn.focus
+  color $green
+  background-color $white
+  border-color $green
 
 
 
@@ -680,6 +736,9 @@ input[type=date]::-webkit-inner-spin-button, input[type=date]::-webkit-clear-but
     color $white
   &:-ms-input-placeholder
     color $white
+
+.add-todo-form span:before
+  font-size 130%
 
 
 // TASK EDIT SCREEN
